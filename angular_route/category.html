@@ -1,0 +1,105 @@
+<section class="section-addcate" ng-controller="CategoryCtrl">
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary p-1">
+      <button class="btn btn-info" ng-click="toggleCate()">Thêm danh mục</button>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="box box-info m-top-medium" ng-show="showAddCate">
+      <div class="box-header with-border">
+        <h3 class="box-title">Thêm mới danh mục</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+      <form class="form-horizontal">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Tên danh mục</label>
+            <div class="col-sm-10">
+              <input type="text" ng-model="addcate__name" class="form-control" id="inputEmail3" placeholder="Nhập tên danh mục">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Tên vắn tắt</label>
+            <div class="col-sm-10">
+              <input type="text" ng-model="addcate__code" class="form-control" id="inputEmail3" placeholder="Nhập tên vắn tắt của danh mục">
+            </div>
+          </div>
+
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <button ng-click="addCate()" type="submit" class="btn btn-info pull-right">Thêm</button>
+        </div>
+        <!-- /.box-footer -->
+      </form>
+    </div>
+
+
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">DANH SÁCH DANH MỤC</h3>
+
+        <div class="box-tools">
+          <ul class="pagination pagination-sm no-margin pull-right">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">»</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body no-padding">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th style="width: 10px">#</th>
+              <th style="width: 25%">Tên danh mục</th>
+              <th style="width: 25%">Code name</th>
+              <th>Chiếm</th>
+              <th>Ngày tạo</th>
+              <th>Ngày sửa</th>
+              <th style="width: 100px">Hành động</th>
+            </tr>
+            <tbody ng-repeat="(key, cat) in cateData" ng-init="cat.showEdit='true'">
+            <tr ng-show="cat.showEdit">
+              <td>{{ key + 1 }}.</td>
+              <td>{{ cat.name }}</td>
+              <td>{{ cat.code_name }}</td>
+              <td><span class="badge bg-green">90%</span></td>
+              <td>{{ cat.created_date * 1000 | date:'dd-MM-yyyy'}}</td>
+              <td>12/4/2018</td>
+              <td>
+                <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                <button ng-click="toggleEdit(cat)"
+                class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></button>
+              </td>
+            </tr>
+            <tr ng-show="!cat.showEdit">
+              <td>{{ key + 1 }}.</td>
+              <td><input class="form-control" ng-model="cat.name" type="text" value="Xã hội"></td>
+              <td><input class="form-control" ng-model="cat.code_name" type="text" value="XH"></td>
+              <td><span class="badge bg-green">90%</span></td>
+              <td>12/4/2018</td>
+              <td>12/4/2018</td>
+              <td>
+                <button ng-click="toggleEdit(cat)"
+                class="btn btn-sm btn-secondary"><i class="fa fa-chevron-circle-left"></i></button>
+                <button ng-click="saveEditCate(cat)"
+                class="btn btn-sm btn-info"><i class="fa fa-save"></i></button>
+              </td>
+            </tr>             
+            </tbody>
+
+          </tbody></table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+  </div>
+</section>
