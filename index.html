@@ -17,8 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Ionicons -->
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="vendor/style51.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css"> 
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
@@ -33,31 +32,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Thư viện bên ngoài -->
   <link rel="stylesheet" href="vendor/angular-material.min.css">
+  <link rel="stylesheet" href="vendor/style51.css">
 <!-- Google Font -->
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition skin-blue sidebar-mini"
       ng-app="myApp" ng-controller="MyController">
 
@@ -217,8 +198,8 @@ desired effect
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          DANH MỤC BÀI VIẾT
-          <small>Quản lý danh mục</small>
+            {{ header_name }}
+          <small>{{ header_subname }}</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -228,9 +209,9 @@ desired effect
 
       <!-- Main content -->
       <section class="content container-fluid">
-
+      
       <div ng-view></div>      
-  
+      
       </section>
 
       </section>

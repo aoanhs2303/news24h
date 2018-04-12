@@ -27,6 +27,20 @@ class News_model extends CI_Model {
 		return $this->db->insert_id();
 	}
 
+	public function deleteCate($id_category)
+	{
+		$this->db->where('id_category', $id_category);
+		$this->db->delete('category');
+		return 1;
+	}
+
+	public function editCateById($id_category,$name,$code_name)
+	{
+		$this->db->set('name', $name);
+		$this->db->set('code_name', $code_name);
+		$this->db->where('id_category', $id_category);
+		return $this->db->update('category');
+	}
 }
 
 /* End of file News_model.php */

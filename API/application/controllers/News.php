@@ -22,6 +22,20 @@ class News extends CI_Controller {
 		echo $this->News_model->addCate($name,$code_name);
 	}
 
+	public function deleteCate()
+	{
+		$id_category = $this->input->post('id_category');
+		echo $this->News_model->deleteCate($id_category);
+	}
+
+	public function editCate()
+	{
+		$id_category = $this->input->post('id_category');
+		$name = $this->input->post('name');
+		$code_name = $this->input->post('code_name');
+		$this->News_model->editCateById($id_category,$name,$code_name);
+	}
+
 	public function getAllCate()
 	{
 		$data = json_encode($this->News_model->getCate());

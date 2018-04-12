@@ -75,7 +75,31 @@
               <td>{{ cat.created_date * 1000 | date:'dd-MM-yyyy'}}</td>
               <td>12/4/2018</td>
               <td>
-                <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                <!-- <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button> -->
+                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-{{key}}">
+                  <i class="fa fa-times"></i>
+                </button>
+                <div class="modal modal-danger fade" id="modal-{{key}}">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span></button>
+                          <h4 class="modal-title">Xóa danh mục</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>Bạn có muốn xóa: {{ cat.name }}</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Trở về</button>
+                          <button ng-click="deleteCate(cat)" data-dismiss="modal"
+                            type="button" class="btn btn-outline">Xóa</button>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
                 <button ng-click="toggleEdit(cat)"
                 class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></button>
               </td>
