@@ -41,6 +41,33 @@ class News extends CI_Controller {
 		$data = json_encode($this->News_model->getCate());
 		echo $data;
 	}
+
+	public function uploadFile()
+	{
+		$target_dir = "./uploads/";
+		$name = $_POST['name'];
+		print_r($_FILES);
+		$target_file = $target_dir . basename($_FILES["file"]["name"]);
+		move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+	}
+
+	public function getArticle()
+	{
+		$data = json_encode($this->News_model->getArticle());
+		echo $data;
+	}
+
+	public function addArticle()
+	{
+		$title = $this->input->post('title');
+		$image = $this->input->post('image');
+		$brief_content = $this->input->post('brief_content');
+		$content = $this->input->post('content');
+		$id_category = $this->input->post('id_category');
+
+		echo $this->News_model->addArticle($title,$image,$brief_content,$content,$id_category);
+	}
+
 }
 
 /* End of file News.php */

@@ -1,0 +1,60 @@
+<section class="section-addcate" ng-controller="List_ArticleCtrl">
+
+  <div class="row">
+    <div class="col-md-12">
+                <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th style="width: 40px">#</th>
+                  <th>Tên bài báo</th>
+                  <th>Hình ảnh</th>
+                  <th>Nội dung</th>
+                  <th>Ngày tạo</th>
+                  <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody  ng-repeat="(key, art) in articleData">
+                <tr>
+                  <td>{{ key }}</td>
+                  <td>{{ art.title }}</td>
+                  <td>{{ art.image }}</td>
+                  <td>{{ art.brief_content }}</td>
+                  <td>{{ art.created_date }}</td>
+                  <td><button class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th style="width: 40px">#</th>
+                  <th>Tên bài báo</th>
+                  <th>Hình ảnh</th>
+                  <th>Nội dung</th>
+                  <th>Ngày tạo</th>
+                  <th>Hành động</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+    </div>
+
+  </section>
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+    })
+  })
+</script>

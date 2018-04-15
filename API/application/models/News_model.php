@@ -41,6 +41,27 @@ class News_model extends CI_Model {
 		$this->db->where('id_category', $id_category);
 		return $this->db->update('category');
 	}
+
+	public function addArticle($title,$image,$brief_content,$content,$id_category)
+	{
+		$data = array(
+			'title' => $title,
+			'image' => $image,
+			'brief_content' => $brief_content,
+			'content' => $content,
+			'id_category' => $id_category
+		);
+		$this->db->insert('article', $data);
+		return $this->db->insert_id();
+	}
+
+	public function getArticle()
+	{
+		$this->db->select('*');
+		$data = $this->db->get('article');
+		$data = $data->result_array();
+		return $data;
+	}
 }
 
 /* End of file News_model.php */
