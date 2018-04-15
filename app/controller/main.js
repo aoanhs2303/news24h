@@ -1,4 +1,4 @@
-var app = angular.module('myApp',['ngMaterial', 'ngRoute']);
+var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables']);
 
 app.config(function ($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);

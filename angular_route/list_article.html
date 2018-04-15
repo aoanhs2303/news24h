@@ -1,4 +1,4 @@
-<section class="section-addcate" ng-controller="List_ArticleCtrl">
+<section class="section-addcate" ng-controller="List_ArticleCtrl as showCase">
 
   <div class="row">
     <div class="col-md-12">
@@ -8,32 +8,40 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table datatable="ng" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th style="width: 40px">#</th>
+                  <th style="width: 20px">#</th>
                   <th>Tên bài báo</th>
+                  <th>Danh mục</th>
                   <th>Hình ảnh</th>
                   <th>Nội dung</th>
-                  <th>Ngày tạo</th>
-                  <th>Hành động</th>
+                  <th style="width: 55px">Ngày tạo</th>
+                  <th style="width: 10%">Hành động</th>
                 </tr>
                 </thead>
-                <tbody  ng-repeat="(key, art) in articleData">
-                <tr>
+                <tbody>
+                <tr ng-repeat="(key, art) in showCase.articleData">
                   <td>{{ key }}</td>
                   <td>{{ art.title }}</td>
-                  <td>{{ art.image }}</td>
+                  <td>{{ art.name }}</td>
+                  <td><img style="width: 100px" ng-src="http://localhost/news24h/api/uploads/{{ art.image }}" alt=""></td>
                   <td>{{ art.brief_content }}</td>
-                  <td>{{ art.created_date }}</td>
-                  <td><button class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button></td>
+                  <td>{{ art.created_date * 1000 | date:'dd-MM-yyyy'}}</td>
+                  <td>
+                    <button style="width: 36px" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+                    <button style="width: 36px" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button>
+                    <button style="width: 36px" class="btn btn-success btn-sm"><i class="fa fa-comment"></i></button>
+                    <button style="width: 36px" class="btn btn-primary btn-sm"><i class="fa fa-globe"></i></button>
+                  </td>
                 </tr>
+
                 </tbody>
                 <tfoot>
                 <tr>
                   <th style="width: 40px">#</th>
                   <th>Tên bài báo</th>
-                  <th>Hình ảnh</th>
+                  <th style="width: 240px">Hình ảnh</th>
                   <th>Nội dung</th>
                   <th>Ngày tạo</th>
                   <th>Hành động</th>
@@ -54,7 +62,7 @@
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : false
     })
   })
 </script>

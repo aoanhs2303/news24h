@@ -58,6 +58,7 @@ class News_model extends CI_Model {
 	public function getArticle()
 	{
 		$this->db->select('*');
+		$this->db->join('category', 'category.id_category = article.id_category', 'left');
 		$data = $this->db->get('article');
 		$data = $data->result_array();
 		return $data;
