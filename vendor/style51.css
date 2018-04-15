@@ -26,7 +26,7 @@
   top: 0;
   right: 100%;
   width: 100%;
-  height: 3px;
+  height: 2px;
 }
 
 div.dataTables_wrapper div.dataTables_filter input {
@@ -36,3 +36,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     height: 20px!important;
     border-radius: 3px!important;
 }
+/*div#cke_editor1 {
+    height: 1000px;
+}*/

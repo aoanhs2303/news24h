@@ -1,0 +1,68 @@
+<section class="section" ng-controller="List_ArticleCtrl">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-danger">
+        <div class="box-header with-border">
+          <h3 class="box-title">CHỈNH SỬA BÀI BÁO</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+
+        <form class="form-horizontal" ng-repeat="data in editData">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="title" class="col-sm-2 control-label">Tên bài báo</label>
+              <div class="col-sm-10">
+                <input type="text" 
+                       ng-model="data.title" class="form-control" id="title" placeholder="Nhập tên bài báo">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Chọn danh mục</label>
+              <div class="col-sm-10">
+                <select ng-model="data.name" class="form-control">
+                  <option ng-repeat="(key, cate) in cateData">{{ cate.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="add_img" class="col-sm-2 control-label">Ảnh đai diện</label>
+              <div class="col-sm-10">
+              	<img style="height: 200px" src="{{ BASEURL }}{{ data.image }}" alt="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="add_img" class="col-sm-2 control-label">Chọn ảnh mới</label>
+              <div class="col-sm-10">
+              	<input file-model="myFile" type="file" class="form-control" id="add_img">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="add_brief" class="col-sm-2 control-label">Nội dung ngắn</label>
+              <div class="col-sm-10">
+                <textarea ng-model="data.brief_content" id="add_brief" class="form-control" rows="3" placeholder="Nhập nội dung vắn tắt"></textarea>
+              </div>
+            </div>
+            <div id="content" class="form-group">
+              <label for="add_brief" class="col-sm-2 control-label">Nội dung</label>
+              <div class="col-sm-10">
+                  <textarea ck-editor ng-model="data.content"></textarea>
+              </div>
+            </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-default">Reset</button>
+            <button type="submit" ng-click="addArticle()" class="btn btn-info pull-right">Thêm</button>
+          </div>
+          <!-- /.box-footer -->
+        </form>
+      </div>
+    </div>
+
+  </section>
+<script>
+	$('#content').on('change keyup keydown paste cut', 'textarea', function (){
+	    $(this).height(0).height(this.scrollHeight);
+	}).find('textarea').change();
+</script>

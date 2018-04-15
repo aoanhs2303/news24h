@@ -56,6 +56,7 @@ app.service('fileUpload', ['$http', function ($http) {
 app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpload){
 	$rootScope.header_name = 'BÀI BÁO';
 	$rootScope.header_subname = 'Thêm mới bài báo';
+	$rootScope.activeMenu = 'Article';
 
 	var get_apiURL = 'http://localhost/news24h/API/news/getAllCate';
 	$http.get(get_apiURL)

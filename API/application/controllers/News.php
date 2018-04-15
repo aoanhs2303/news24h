@@ -57,6 +57,13 @@ class News extends CI_Controller {
 		echo $data;
 	}
 
+	public function getArticleByID()
+	{
+		$id = $this->input->post('article_id');
+		$data = json_encode($this->News_model->getArticleByID($id));
+		echo $data;	
+	}
+
 	public function addArticle()
 	{
 		$title = $this->input->post('title');

@@ -63,6 +63,17 @@ class News_model extends CI_Model {
 		$data = $data->result_array();
 		return $data;
 	}
+
+	public function getArticleByID($id)
+	{
+		$this->db->select('*');
+		$this->db->join('category', 'category.id_category = article.id_category', 'left');
+		$this->db->where('id_article', $id);
+		$data = $this->db->get('article');
+		$data = $data->result_array();
+		return $data;
+	}
+
 }
 
 /* End of file News_model.php */

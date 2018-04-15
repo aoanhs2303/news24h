@@ -2,7 +2,8 @@ angular.module('myApp')
 .controller('CategoryCtrl',  function($scope,$http, $mdToast, $rootScope){
 	$rootScope.header_name = 'DANH MỤC BÀI VIẾT';
 	$rootScope.header_subname = 'Quản lý danh mục';
-	
+	$rootScope.activeMenu = 'Cate';
+
 	$scope.showAddCate = false;
 	var get_apiURL = 'http://localhost/news24h/API/news/getAllCate';
 	$http.get(get_apiURL)

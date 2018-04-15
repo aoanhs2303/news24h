@@ -22,15 +22,43 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="(key, art) in showCase.articleData">
-                  <td>{{ key }}</td>
+                  <td>{{ key+1 }}</td>
                   <td>{{ art.title }}</td>
                   <td>{{ art.name }}</td>
-                  <td><img style="width: 100px" ng-src="http://localhost/news24h/api/uploads/{{ art.image }}" alt=""></td>
+                  <td><img style="width: 100px" ng-src="{{ BASEURL }}{{ art.image }}" alt=""></td>
                   <td>{{ art.brief_content }}</td>
                   <td>{{ art.created_date * 1000 | date:'dd-MM-yyyy'}}</td>
                   <td>
-                    <button style="width: 36px" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
-                    <button style="width: 36px" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></button>
+                    <!-- <button class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> -->
+                    <button style="width: 36px" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-{{key}}">
+                      <i class="fa fa-times"></i>
+                    </button>
+                    <div class="modal modal-danger fade" id="modal-{{key}}">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span></button>
+                              <h4 class="modal-title">Xóa bài viết</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p><b>Bạn có muốn xóa:</b> {{ art.title }}</p>
+                              <div class="text-center">
+                                <img style="width: 300px" src="{{BASEURL}}{{art.image}}" alt="">
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Trở về</button>
+                              <button ng-click="deleteCate(cat)" data-dismiss="modal"
+                              type="button" class="btn btn-outline">Xóa</button>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+
+                    <a ng-click="editArticle(art.id_article)" href="edit_article/{{art.id_article}}" style="width: 36px" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
                     <button style="width: 36px" class="btn btn-success btn-sm"><i class="fa fa-comment"></i></button>
                     <button style="width: 36px" class="btn btn-primary btn-sm"><i class="fa fa-globe"></i></button>
                   </td>
