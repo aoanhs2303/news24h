@@ -21,8 +21,8 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Chọn danh mục</label>
               <div class="col-sm-10">
-                <select ng-model="data.name" class="form-control">
-                  <option ng-repeat="(key, cate) in cateData">{{ cate.name }}</option>
+                <select ng-model="data.id_category" class="form-control">
+                  <option ng-repeat="(key, cate) in cateData" value="{{ cate.id_category }}">{{ cate.name }}</option>
                 </select>
               </div>
             </div>
@@ -53,7 +53,7 @@
           <!-- /.box-body -->
           <div class="box-footer">
             <button type="submit" class="btn btn-default">Reset</button>
-            <button type="submit" ng-click="addArticle()" class="btn btn-info pull-right">Thêm</button>
+            <button type="submit" ng-click="editArticle(data)" class="btn btn-info pull-right">Sửa</button>
           </div>
           <!-- /.box-footer -->
         </form>

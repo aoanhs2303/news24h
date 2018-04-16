@@ -15,7 +15,7 @@ app.controller('Edit_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 		var data = $.param({
 			article_id: $routeParams.id
 		});
-		console.log(data);
+
 		var config = {
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -26,11 +26,34 @@ app.controller('Edit_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 		.then(function(res) {
 			if(res) {
 				$scope.editData = res.data;
-				console.log(res.data);
-				console.log($scope.editData);
 			}
 		}, function(err){})		
 	}
-	console.log($scope.editData);
+	
+	$scope.editArticle = function(item) {
+		var data = $.param({
+			id_article: item.id_article,
+			title: item.title,
+			image: item.image,
+			brief_content: item.brief_content,
+			content: item.content,
+			id_category: item.id_category
+		})
+		console.log(data);
+
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		var editUrl = 'http://localhost/news24h/API/news/editArticleByID';
+		$http.post(editUrl,data,config)
+		.then(function(res) {
+			if(res) {
+
+			}
+		}, function(err){})
+	}
+	
 	
 })
