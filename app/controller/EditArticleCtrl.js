@@ -1,5 +1,5 @@
 var app = angular.module('myApp')
-app.controller('Edit_ArticleCtrl',  function($scope, $http, $routeParams, $rootScope){
+app.controller('Edit_ArticleCtrl',  function($scope, $http, $routeParams, $rootScope, fileUpload){
 	$rootScope.header_name = 'BÀI VIẾT';
 	$rootScope.header_subname = 'Quản lý bài viết';
 	$rootScope.activeMenu = 'Article';
@@ -29,8 +29,11 @@ app.controller('Edit_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 			}
 		}, function(err){})		
 	}
-	
+
 	$scope.editArticle = function(item) {
+		var file = $scope.newImage;
+		console.log(file);
+
 		var data = $.param({
 			id_article: item.id_article,
 			title: item.title,
@@ -54,6 +57,4 @@ app.controller('Edit_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 			}
 		}, function(err){})
 	}
-	
-	
 })

@@ -36,6 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css"> -->
   <link rel="stylesheet" href="vendor/angular-material.min.css">
+  <link rel="stylesheet" href="vendor/select.css">
   <link rel="stylesheet" href="vendor/style51.css">
 <!-- Google Font -->
 <link rel="stylesheet"
@@ -44,7 +45,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini"
-      ng-app="myApp" ng-controller="myController">
+      ng-app="myApp" ng-controller="myController as ctrl">
 
   <div class="wrapper">
 
@@ -97,6 +98,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
   <script type="text/javascript" src="vendor/angular-aria.min.js"></script>
   <script type="text/javascript" src="vendor/angular-messages.min.js"></script>
   <script type="text/javascript" src="vendor/angular-material.min.js"></script>  
+  <script type="text/javascript" src="vendor/angular-sanitize.js"></script>  
   <script type="text/javascript" src="vendor/angular-datatables.min.js"></script>  
 
   <script type="text/javascript" src="vendor/pace.min.js"></script>  
@@ -105,10 +107,12 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
   <script type="text/javascript" src="app/controller/ArticleCtrl.js"></script>  
   <script type="text/javascript" src="app/controller/ListArticleCtrl.js"></script>  
   <script type="text/javascript" src="app/controller/EditArticleCtrl.js"></script>  
+  <script type="text/javascript" src="app/controller/HotArticleCtrl.js"></script>  
 
   <script type="text/javascript" src="bower_components/ckeditor/ckeditor.js"></script>
   <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
   <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="vendor/select.js"></script>
 
 </body>
 </html>

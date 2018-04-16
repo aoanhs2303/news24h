@@ -1,8 +1,8 @@
-var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables']);
+var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanitize', 'ui.select']);
 
-app.controller('myController', function ($scope, $rootScope) {
+app.controller('myController', function ($scope, $rootScope, $http) {
 	$rootScope.BASEURL = 'http://localhost/news24h/api/uploads/';
-	
+	 
 })
 
 app.config(function ($routeProvider, $locationProvider) {
@@ -27,6 +27,10 @@ app.config(function ($routeProvider, $locationProvider) {
 	.when('/edit_article/:id', {
 		templateUrl: 'angular_route/edit_article.html',
 		controller: 'Edit_ArticleCtrl'
+	})
+	.when('/hot_article', {
+		templateUrl: 'angular_route/hot_article.html',
+		controller: 'Hot_ArticleCtrl'
 	})
 	.otherwise({ redirectTo: '/' })
 })

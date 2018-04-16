@@ -1,0 +1,37 @@
+<section class="section" ng-controller="Hot_ArticleCtrl as ctrl">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">CÀI ĐẶT BÀI VIẾT HOT</h3>
+        </div>
+        <div class="box-body">
+          <ui-select multiple ng-model="ctrl.multipleDemo.hot" theme="bootstrap" ng-disabled="ctrl.disabled" close-on-select="false" style="width: 100%;" title="Choose a color">
+            <ui-select-match placeholder="Chọn bài viết nổi bật để lên trang chủ . . .">{{$item.title}} <{{ $item.id_article }}></ui-select-match>
+            <!-- <ui-select-choices repeat="dm in ctrl.availableColors | filter:$select.search"> -->
+            <ui-select-choices repeat="dm.id_article as dm in ctrl.allAricle | propsFilter: {title: $select.search, id_article: $select.search}">
+              <div class="row">
+                <div class="col-sm-1">
+                  <img src="{{ BASEURL }}{{ dm.image }}" style="width: 80px">
+                </div>
+                <div class="col-sm-10">
+                  <div ng-bind-html="dm.title | highlight: $select.search"></div>
+                  <small>
+                    ID: <span ng-bind-html="dm.id_article | highlight: $select.search"></span>
+                  </small>
+                </div>
+              </div>
+              
+              
+            </ui-select-choices>
+          </ui-select>
+          <p>Selected: {{ctrl.multipleDemo.hot}}</p>
+          <hr>
+          <button class="btn btn-outline-danger" ng-click="guidulieu(ctrl.multipleDemo.hot)">Send</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
