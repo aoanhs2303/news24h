@@ -2,6 +2,7 @@ var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables']);
 
 app.controller('myController', function ($scope, $rootScope) {
 	$rootScope.BASEURL = 'http://localhost/news24h/api/uploads/';
+	
 })
 
 app.config(function ($routeProvider, $locationProvider) {

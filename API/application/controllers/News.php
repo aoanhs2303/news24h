@@ -75,6 +75,12 @@ class News extends CI_Controller {
 		echo $this->News_model->addArticle($title,$image,$brief_content,$content,$id_category);
 	}
 
+	public function deleteArticle()
+	{
+		$aritcle_id = $this->input->post('id_article');
+		echo $this->News_model->deleteArticle($aritcle_id);
+	}
+
 }
 
 /* End of file News.php */

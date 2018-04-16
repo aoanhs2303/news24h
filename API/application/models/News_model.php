@@ -74,6 +74,12 @@ class News_model extends CI_Model {
 		return $data;
 	}
 
+	public function deleteArticle($aritcle_id)
+	{
+		$this->db->where('id_article', $aritcle_id);
+		return $this->db->delete('article');
+	}
+
 }
 
 /* End of file News_model.php */
