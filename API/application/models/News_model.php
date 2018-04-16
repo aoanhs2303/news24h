@@ -80,6 +80,18 @@ class News_model extends CI_Model {
 		return $this->db->delete('article');
 	}
 
+	public function editArticleByID($id_article,$title,$image,$brief_content,$content,$id_category)
+	{
+		$this->db->set('title', $title);
+		$this->db->set('image', $image);
+		$this->db->set('brief_content', $brief_content);
+		$this->db->set('content', $content);
+		$this->db->set('id_category', $id_category);
+
+		$this->db->where('id_article', $id_article);
+		return $this->db->update('article');		
+	}
+
 }
 
 /* End of file News_model.php */
