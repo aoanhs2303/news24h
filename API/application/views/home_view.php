@@ -6,10 +6,13 @@
 					<div class="col-md-8 pr-0 big-slide" style="padding: 3px;">
 						<div class="slider">
 							<div id="slider-home" class="owl-carousel owl-theme">
-								<?php foreach ($hot_article as $hot) { ?>
+								<?php 
+								$length = count($hot_article);
+								foreach ($hot_article as $key => $hot) { 
+								if($key < $length - 2) { ?>
 								<div class="item">
 									<a href="<?php echo base_url() ?>home/detail/<?php echo $hot['id_article'] ?>">
-										<img src="<?php echo base_url() ?>vendor/img/slide1.jpg" alt="">
+										<img src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="">
 										<div class="caption">
 											<h2><?php echo $hot['title'] ?></h2>
 											<h6>Lorem Ipsum Dolor Sit Meta</h6>
@@ -17,12 +20,16 @@
 										</div>
 									</a>
 								</div>	
+								<?php } ?>	
 								<?php } ?>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 pl-0 small-slide">
-						<?php foreach ($hot_article as $hot) { ?>
+						<?php 
+						$length = count($hot_article);
+						foreach ($hot_article as $key => $hot) { 
+						if($key >= $length - 2) { ?>
 							<a href="<?php echo base_url() ?>home/detail/<?php echo $hot['id_article'] ?>">
 								<div class="new-post" style="height: unset; padding: 3px;">
 								<div class="detail">
@@ -31,6 +38,7 @@
 								</div>
 							</div>
 							</a>
+						<?php } ?>
 						<?php } ?>
 					</div>
 				</div>

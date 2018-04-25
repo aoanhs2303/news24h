@@ -1,8 +1,20 @@
-var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanitize', 'ui.select']);
+var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanitize', 'ui.select', 'ngCookies']);
 
-app.controller('myController', function ($scope, $rootScope, $http) {
+app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
 	$rootScope.BASEURL = 'http://localhost/news24h/api/uploads/';
-	 
+	var get_session = 'http://localhost/news24h/API/news/getSession';
+	$http.get(get_session)
+	.then(function(res){
+		  $scope.myCookie = $cookies.get('username')
+		  var favoriteCookie = $cookies.get('username');
+		  var user = res.data;
+		  $cookies.put('username', user);
+	}, function(res){})
+	if($cookies.get('username')) {
+		
+	} else {
+		window.location.href = "http://localhost/news24h/API/login";
+	}
 })
 
 app.config(function ($routeProvider, $locationProvider) {

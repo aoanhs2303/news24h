@@ -162,6 +162,23 @@ class News_model extends CI_Model {
 		return $s;
 	}
 
+	public function authenticationAdmin($user, $pass)
+	{
+		$this->db->select('*');
+		$px = md5($pass);
+		$dieukien = array('username	' => $user, 'password' => $pass);
+		$this->db->where($dieukien);
+		$data = $this->db->get('user');
+
+		$data = $data->result_array();
+
+		if(count($data) == 1) {
+			return $data;
+		} else {
+			return null;
+		}
+	}
+
 }
 
 /* End of file News_model.php */

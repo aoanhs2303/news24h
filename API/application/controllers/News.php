@@ -100,6 +100,15 @@ class News extends CI_Controller {
 		echo $this->News_model->setHotArticle($array_id);
 	}
 
+	public function getSession()
+	{
+		if(isset($_SESSION['Username'])) {
+	    	echo $_SESSION['Username'];
+	    } else {
+	    	echo "";
+	    }
+	}
+
 }
 
 /* End of file News.php */

@@ -54,6 +54,11 @@ class Home extends CI_Controller {
 		$this->load->view('include/footer');
 	}
 
+	public function login()
+	{
+		$this->load->view('login_view');
+	}
+
 	public function loadmore()
 	{
 		$this->load->database();
