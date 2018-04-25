@@ -204,23 +204,30 @@
 					<div class="section-head">
 						<h3>XEM NHIỀU</h3>
 					</div>
+					<?php foreach ($xemnhieu as $key => $value) { 
+						if($key == 0) { ?>
 					<div class="new-post" style="height: unset;">
 						<div class="detail">
-							<img class="img-responsive" src="<?php echo base_url() ?>vendor/img/post1.jpg" alt="">
-							<p><?php echo $ts['brief_content'] ?></p>
+							<img class="img-responsive" src="<?php echo base_url() ?>uploads/<?php echo $value['image'] ?>" alt="">
+							<p><?php echo $value['brief_content'] ?></p>
 							<span class="date_corner full-right"><i class="fa fa-clock-o"></i> 8 Dec, 2020</span>	
 						</div>
-						<h5><a href=""><?php echo $ts['title'] ?></a></h5>
+						<h5><a href="<?php echo base_url() ?>home/detail/<?php echo $value['id_article'] ?>"><?php echo $value['title'] ?></a></h5>
 					</div>
-					<hr>
-					<div class="row">
+
+						<?php }  else {?>
+					
+					<div class="row pb-1">
 						<div class="col-md-4 pr-0">
-							<img class="img-responsive" src="<?php echo base_url() ?>vendor/img/post1.jpg" alt="">
+							<img class="img-responsive" src="<?php echo base_url() ?>uploads/<?php echo $value['image'] ?>" alt="">
 						</div>
 						<div class="col-md-8">
-							<h6><a href=""><?php echo $ts['title'] ?></a></h6>	
+							<h6><a href="<?php echo base_url() ?>home/detail/<?php echo $value['id_article'] ?>"><?php echo $value['title'] ?></a></h6>	
 						</div>
 					</div>
+					<?php }?>
+					<?php }?>
+					
 				</div>
 			</div>
 

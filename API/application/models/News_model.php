@@ -128,6 +128,16 @@ class News_model extends CI_Model {
 		return $data;
 	}
 
+	public function getXNArticle()
+	{
+		$this->db->select('*');
+		$this->db->order_by('view', 'desc');
+		$this->db->where('view !=', 0);
+		$data = $this->db->get('article', 6);
+		$data = $data->result_array();
+		return $data;
+	}
+
 	public function getOtherArticle()
 	{
 		$this->db->select('*');

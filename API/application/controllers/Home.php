@@ -15,6 +15,7 @@ class Home extends CI_Controller {
 		$latest_article = $this->News_model->getLatestArticle();
 		$nb_article = $this->News_model->getNBArticle();
 		$other_article = $this->News_model->getOtherArticle();
+		$xemnhieu = $this->News_model->getXNArticle();
 		$data_header = array(
 			'danhmuc' => $cate
 		);
@@ -26,7 +27,8 @@ class Home extends CI_Controller {
 			'tg_article'     => $this->News_model->getCateArticle(2), //The gioi = 2
 			'cn_article'     => $this->News_model->getCateArticle(5), //Cong nghe = 5
 			'gd_article'     => $this->News_model->getCateArticle(6),  //Giao duc = 6
-			'other_article'  => $other_article 
+			'other_article'  => $other_article,
+			'xemnhieu'		 => $xemnhieu
 		);
 
 		$this->load->view('include/header', $data_header);
@@ -40,11 +42,12 @@ class Home extends CI_Controller {
 		$cate = $this->News_model->getCate();
 		$detail = $this->News_model->getArticleByID($id);
 		$relate = $this->News_model->getCateArticle($detail[0]["id_category"]);
-
+		$xemnhieu = $this->News_model->getXNArticle();
 		$data_header = array('danhmuc' => $cate );
 		$data_main = array(
 			'detail' => $detail,
-			'relate' => $relate
+			'relate' => $relate,
+			'xemnhieu' => $xemnhieu
 		);
 		$this->load->view('include/header', $data_header);
 		$this->load->view('detail_view', $data_main);
