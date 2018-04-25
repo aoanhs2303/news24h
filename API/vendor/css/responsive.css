@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 640px) {
+	.navbar-toggle {
+		margin-top: 44px;
+	}
+}
+
+@media (max-width: 480px) {
+	
+}
+
+@media (max-width: 360px) {
+	.navbar-toggle {
+		margin-top: 12px;
+	}
+
+	.cate-link-filter h3 {
+		font-size: 24px;
+	}
+
+	.footer-content {
+		margin-bottom: 30px;
+	}
+}

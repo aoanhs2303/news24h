@@ -1,7 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class News extends CI_Controller {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -91,6 +90,14 @@ class News extends CI_Controller {
 		$id_category = $this->input->post('id_category');
 	
 		echo $this->News_model->editArticleByID($id_article,$title,$image,$brief_content,$content,$id_category);
+	}
+
+	public function setHotArticle()
+	{
+		$array_id = $this->input->post('array_id');
+		// $array_id = json_encode($array_id);
+		// echo $array_id;
+		echo $this->News_model->setHotArticle($array_id);
 	}
 
 }

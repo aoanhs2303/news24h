@@ -45,8 +45,22 @@ app.controller('Hot_ArticleCtrl',  function($scope, $http, $rootScope){
 		vm.multipleDemo.hot = [];
 	},function(err){})
 
-	$scope.guidulieu = function($dulieu) {
-		console.log($dulieu);
+	$scope.guidulieu = function(dulieu) {
+		var a, s;
+		dl = JSON.stringify(dulieu);
+		var data = $.param({
+			array_id: dl
+		});
+
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		var setHotUrl = 'http://localhost/news24h/API/news/setHotArticle';
+		$http.post(setHotUrl,data,config)
+		.then(function(res){res.data}, function(err){})
+		
 	}	
 })
 

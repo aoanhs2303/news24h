@@ -92,6 +92,66 @@ class News_model extends CI_Model {
 		return $this->db->update('article');		
 	}
 
+	public function getHotArticle()
+	{
+		$this->db->select('*');
+		$this->db->where('hot', 'true');
+		$data = $this->db->get('article');
+		$data = $data->result_array();
+		return $data;
+	}
+
+	public function getLatestArticle()
+	{
+		$this->db->select('*');
+		$this->db->order_by('created_date', 'desc');
+		$data = $this->db->get('article', 6);
+		$data = $data->result_array();
+		return $data;
+	}
+
+	public function getNBArticle()
+	{
+		$this->db->select('*');
+		$this->db->where('hot', 'nb');
+		$data = $this->db->get('article', 6);
+		$data = $data->result_array();
+		return $data;
+	}
+
+	public function getCateArticle($cate)
+	{
+		$this->db->select('*');
+		$this->db->where('id_category', $cate);
+		$data = $this->db->get('article', 3);
+		$data = $data->result_array();
+		return $data;
+	}
+
+	public function getOtherArticle()
+	{
+		$this->db->select('*');
+		$this->db->order_by('id_article', 'desc');
+		$condition = array('hot !=' => 'hot', 'hot !=' => 'nb');
+		$this->db->where($condition);
+		$data = $this->db->get('article', 5);
+		$data = $data->result_array();
+		return $data;
+	}
+
+	public function setHotArticle($array_id)
+	{
+		// $id = array($array_id);
+		// foreach ($array_id as $key => $value) {
+		// 	return $value;
+		// }
+		$s = 0;
+		for ($i=1; $i <= count($array_id); $i++) { 
+			$s = $s + $i;
+		}
+		return $s;
+	}
+
 }
 
 /* End of file News_model.php */
