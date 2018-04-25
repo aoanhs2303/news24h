@@ -61,7 +61,7 @@
 	<!-- end scroll to top -->
 
 	<!-- script -->
-	<script src="<?php echo base_url() ?>vendor/js/jquery.min.js"></script>
+
 	<script src="<?php echo base_url() ?>vendor/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/js/owl.carousel.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/js/jquery.scrollToTop.min.js"></script>
@@ -70,41 +70,7 @@
 	<script src="<?php echo base_url() ?>vendor/js/masonry.pkgd.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/js/isotope.pkgd.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/js/main.js"></script>	
-	<script type="text/javascript">
 
-		var page = 1;
-		$(window).scroll(function() {
-		    if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		        page++;
-		        loadMoreData(page);
-		    }
-		});
-		function loadMoreData(page){
-		  $.ajax(
-		        {
-		            url: 'http://localhost/news24h/API/home/loadmore?page=' + page,
-		            type: "get",
-		            beforeSend: function()
-		            {
-		                $('.ajax-load').show();
-		            }
-		        })
-		        .done(function(data)
-		        {
-		            if(data == ""){
-		                $('.ajax-load').html("No more records found");
-		                return;
-		            }
-		            $('.ajax-load').hide();
-		            $("#post-data").append(data);
-		        })
-		        .fail(function(jqXHR, ajaxOptions, thrownError)
-		        {
-		              alert('server not responding...');
-		        });
-		}
-
-	</script>
 
 </body>
 </html>

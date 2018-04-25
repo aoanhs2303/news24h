@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="<?php echo base_url() ?>vendor/css/responsive.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i&amp;subset=vietnamese" rel="stylesheet">
+		<script src="<?php echo base_url() ?>vendor/js/jquery.min.js"></script>
 </head>
 <body>
 
@@ -36,7 +37,7 @@
 								<span class="sr-only"></span>
 								<i class="fa fa-bars"></i>
 							</button>
-							<a href="index.html" class="navbar-brand"><h1><i class="fa fa-file-text-o"></i>NEWS24H</h1></a>
+							<a href="<?php echo base_url() ?>home" class="navbar-brand"><h1><i class="fa fa-file-text-o"></i>NEWS24H</h1></a>
 						</div>
 						<form class="form-inline my-2 my-lg-0 search_style">
 							<div class="input-group search_group">

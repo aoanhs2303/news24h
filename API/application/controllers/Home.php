@@ -37,9 +37,18 @@ class Home extends CI_Controller {
 
 	public function detail($id)
 	{
-		echo "<pre>";
-		var_dump($id);
-		echo "</pre>";
+		$cate = $this->News_model->getCate();
+		$detail = $this->News_model->getArticleByID($id);
+		$relate = $this->News_model->getCateArticle($detail[0]["id_category"]);
+
+		$data_header = array('danhmuc' => $cate );
+		$data_main = array(
+			'detail' => $detail,
+			'relate' => $relate
+		);
+		$this->load->view('include/header', $data_header);
+		$this->load->view('detail_view', $data_main);
+		$this->load->view('include/footer');
 	}
 
 	public function loadmore()
