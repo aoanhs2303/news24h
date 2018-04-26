@@ -43,15 +43,26 @@ class Home extends CI_Controller {
 		$detail = $this->News_model->getArticleByID($id);
 		$relate = $this->News_model->getCateArticle($detail[0]["id_category"]);
 		$xemnhieu = $this->News_model->getXNArticle();
+		$comment = $this->News_model->getCommentByAricleId($id);
+
 		$data_header = array('danhmuc' => $cate );
 		$data_main = array(
-			'detail' => $detail,
-			'relate' => $relate,
-			'xemnhieu' => $xemnhieu
+			'detail'   => $detail,
+			'relate'   => $relate,
+			'xemnhieu' => $xemnhieu,
+			'comment'  => $comment
 		);
 		$this->load->view('include/header', $data_header);
 		$this->load->view('detail_view', $data_main);
 		$this->load->view('include/footer');
+	}
+
+	public function addComment()
+	{
+		$content = $this->input->post('content');
+		$id_article = $this->input->post('id_article');
+		$id_user = $this->input->post('id_user');
+		$this->News_model->addComment($content, $id_article, $id_user);
 	}
 
 	public function login()

@@ -14,11 +14,33 @@ class Login extends CI_Controller {
 		$this->load->view('login_view');
 	}
 
+	public function register()
+	{
+		$this->load->view('register_view');
+	}
+
+	public function do_register()
+	{
+		$username = $this->input->post('username');
+		$email = $this->input->post('email');
+		$pass_1 = $this->input->post('password_1');
+		$pass_2 = $this->input->post('password_2');
+		if($pass_1 == $pass_2) {
+			$this->News_model->addUser($username, $email, md5($pass_1));
+			// $data['login'] = 'Đăng ký thành công';
+			// $this->load->view('login_view', $data);
+			$this->load->view('login_view');
+
+		} else {
+			$this->load->view('register_view');
+		}
+	}
+
 	public function logout()
 	{
-		if(isset($_SESSION['Username'])) {
-	        session_destroy(); 
-	    }
+		
+	    session_destroy(); 
+	    
 	    redirect(base_url().'login');
 	}
 
@@ -28,12 +50,19 @@ class Login extends CI_Controller {
 		$pass = $this->input->post('password');
 		
 		$data = $this->News_model->authenticationAdmin($user, md5($pass));
-		if ($data) {
+		if ($data && $data[0]['id_usertype'] == 1) {
             $_SESSION["Username"] = $data[0]["username"];
             $this->session->unset_userdata("ErrorMessage");
-            // echo $_SESSION["Username"];
             redirect('http://localhost/news24h/');
-        } else {
+        }
+        else if ($data && $data[0]['id_usertype'] == 3) {
+            $_SESSION["user"] = $data[0]["username"];
+            $_SESSION["id_user"] = $data[0]["id_user"];
+            $this->session->unset_userdata("ErrorMessage");
+            redirect('http://localhost/news24h/API/home');
+		
+        }
+        else {
         	$_SESSION["ErrorMessage"] = "Incorrect username or password";
         	redirect(base_url().'login');
         }

@@ -61,7 +61,7 @@
 	<!-- end scroll to top -->
 
 	<!-- script -->
-
+	
 	<script src="<?php echo base_url() ?>vendor/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/js/owl.carousel.min.js"></script>
 	<script src="<?php echo base_url() ?>vendor/js/jquery.scrollToTop.min.js"></script>

@@ -21,17 +21,30 @@
 					<div class="one_comment">
 						<div class="thumb" style="opacity: 1;"><img alt="" src="https://i.pinimg.com/originals/5a/59/1c/5a591c4e208e1747894b41ec7f830beb.png" height="50" width="50"></div>
 						<div class="comment_content">
+							
+							<?php if(isset($_SESSION["user"])){ ?>
+							<h5 id="cm_name"><?php echo $_SESSION["user"] ?></h5>
+								<input type="text" id="cm_content" name="content" class="form-control" placeholder="Nhập nôi dung bình luận">
+								<input type="hidden" id="cm_idarticle" name="id_article" class="form-control" value="<?php echo $value['id_article'] ?>">
+								<input type="hidden" id="cm_iduser" name="id_user" class="form-control" value="<?php echo $_SESSION["id_user"] ?>">
+							<?php } else { ?>
 							<h5>Đăng nhập để bình luận</h5>
-							<input type="text" class="form-control" disabled placeholder="Nhập nôi dung bình luận">
+								<input type="text" class="form-control" disabled placeholder="Nhập nôi dung bình luận">
+							<?php } ?>
+							
 						</div>
 					</div>
+					<div id="comment_block">
+					<?php foreach ($comment as $value): ?>
 					<div class="one_comment">
-						<div class="thumb" style="opacity: 1;"><img alt="" src="http://1.gravatar.com/avatar/db6f032dce962144efc9b625779461a1?s=50&amp;d=mm&amp;r=g" srcset="http://1.gravatar.com/avatar/db6f032dce962144efc9b625779461a1?s=100&amp;d=mm&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50"></div>
+						<div class="thumb" style="opacity: 1;"><img alt="" src="https://i.pinimg.com/originals/5a/59/1c/5a591c4e208e1747894b41ec7f830beb.png" class="avatar avatar-50 photo" height="50" width="50"></div>
 						<div class="comment_content">
-							<h5>Written by admin</h5>
-							Lorem ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labolore magna aliqua.
+							<h5><?php echo $value['username'] ?> <small>- <?php echo $value['time'] ?></small></h5>
+							<?php echo $value['content'] ?>
 						</div>
-					</div>
+					</div>	
+					<?php endforeach ?>
+					</div>	
 				</div>
 
 
@@ -95,3 +108,45 @@
 
 		</div>
 	</div>
+	<script>
+		$('#cm_content').keypress(function(event) {
+
+			if (event.which == 13 && $('#cm_content').val()){
+				var today = new Date();
+				var dd = today.getDate();
+			    var mm = today.getMonth()+1; //January is 0!
+			    var yyyy = today.getFullYear();
+			    if(dd<10){
+			      	dd='0'+dd;
+			    } 
+			    if(mm<10){
+			      	mm='0'+mm;
+			    }
+			    var today = dd+'/'+mm+'/'+yyyy;
+				$.ajax({
+					url: 'http://localhost/news24h/API/Home/addComment',
+					type: 'post',
+					dataType: 'json',
+					data: {
+						content: $('#cm_content').val(),
+						id_article: $('#cm_idarticle').val(),
+						id_user: $('#cm_iduser').val(),
+					},
+				})
+				.always(function() {
+					
+					var data_append = `
+					<div class="one_comment">
+						<div class="thumb" style="opacity: 1;"><img alt="" src="https://i.pinimg.com/originals/5a/59/1c/5a591c4e208e1747894b41ec7f830beb.png" class="avatar avatar-50 photo" height="50" width="50"></div>
+						<div class="comment_content">
+							<h5>`+$('h5#cm_name').html()+` <small>- `+today+`</small></h5>
+							`+$('#cm_content').val()+`
+						</div>
+					</div>`;
+					$('#comment_block').prepend(data_append);
+					$('#cm_content').val('');
+				});	
+			}
+		});
+			
+	</script>

@@ -38,7 +38,20 @@
 								<i class="fa fa-bars"></i>
 							</button>
 							<a href="<?php echo base_url() ?>home" class="navbar-brand"><h1><i class="fa fa-file-text-o"></i>NEWS24H</h1></a>
+							
+
+							<div class="btn-group" style="position: absolute;top: 24px;right: 258px;">
+							  <?php if(isset($_SESSION["user"])){ ?>
+								<button type="button" class="btn btn-danger"><?php echo $_SESSION['user'] ?></button>
+							  	<a href="<?php echo base_url() ?>login/logout" type="button" class="btn btn-outline-dark">Đăng xuất</a>
+							  <?php } else { ?>
+							  	<a href="<?php echo base_url() ?>login" type="button" class="btn btn-outline-dark">Đăng nhập</a>
+							  	<a href="<?php echo base_url() ?>login/register" type="button" class="btn btn-outline-dark">Đăng ký</a>
+							  <?php } ?>
+							  
+							</div>							
 						</div>
+
 						<form class="form-inline my-2 my-lg-0 search_style">
 							<div class="input-group search_group">
 							  <input class="form-control mr-sm-2" type="text" placeholder="Nhập nội dung tìm kiếm">

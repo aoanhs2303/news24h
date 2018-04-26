@@ -179,6 +179,40 @@ class News_model extends CI_Model {
 		}
 	}
 
+	public function addUser($username,$email,$password)
+	{
+		$user = array(
+			'username' => $username, 
+			'password' => $password,
+			'email'	   => $email,
+			'id_usertype' => 3
+		);
+		$this->db->insert('user', $user);
+	}
+
+	public function getCommentByAricleId($id_article)
+	{
+		$this->db->select('*');
+		$this->db->order_by('id_comment', 'desc');
+		$this->db->join('user', 'user.id_user = comment.id_user', 'left');
+		$this->db->where('id_article', $id_article);
+		$data = $this->db->get('comment');
+		$data = $data->result_array();
+		return $data;
+	}
+
+	public function addComment($content, $id_article, $id_user)
+	{
+		$data = array(
+			'content' => $content,
+			'id_article' => $id_article,
+			'id_user' => $id_user
+		);
+		$this->db->insert('comment', $data);
+		return $this->db->insert_id();
+	}
+
+
 }
 
 /* End of file News_model.php */
