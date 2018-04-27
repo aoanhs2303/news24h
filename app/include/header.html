@@ -144,7 +144,9 @@
               <li><a ng-click="activeMenu = 'Article'" href="hot_article">Bài viết nổi bật</a></li>
             </ul>
           </li>
-          <li><a href="article"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+          <li ng-class="{active : activeMenu == 'Comment'}">
+            <a ng-click="activeMenu = 'Comment'" href="comment"><i class="fa fa-comments"></i> <span>Bình luận</span></a>
+          </li>
         </ul>
         <!-- /.sidebar-menu -->
       </section>

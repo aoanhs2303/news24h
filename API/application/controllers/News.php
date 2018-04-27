@@ -109,6 +109,18 @@ class News extends CI_Controller {
 	    }
 	}
 
+	public function getAllComment()
+	{
+		echo json_encode($this->News_model->getAllComment());
+	}
+
+	public function toggleComment()
+	{
+		$id_comment = $this->input->post('id_comment');
+		$block = $this->input->post('block');
+		echo $this->News_model->toggleComment($id_comment, $block);
+	}
+
 }
 
 /* End of file News.php */

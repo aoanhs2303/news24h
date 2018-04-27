@@ -190,12 +190,24 @@ class News_model extends CI_Model {
 		$this->db->insert('user', $user);
 	}
 
+	public function getAllComment()
+	{
+		$this->db->select('comment.*, user.username, article.title');
+		$this->db->order_by('id_comment', 'desc');
+		$this->db->join('user', 'user.id_user = comment.id_user', 'left');
+		$this->db->join('article', 'article.id_article = comment.id_article', 'left');
+		$data = $this->db->get('comment');
+		$data = $data->result_array();
+		return $data;
+	}
+
 	public function getCommentByAricleId($id_article)
 	{
 		$this->db->select('*');
 		$this->db->order_by('id_comment', 'desc');
 		$this->db->join('user', 'user.id_user = comment.id_user', 'left');
-		$this->db->where('id_article', $id_article);
+		$dieukien = array('id_article' => $id_article, 'block' => 0);
+		$this->db->where($dieukien);
 		$data = $this->db->get('comment');
 		$data = $data->result_array();
 		return $data;
@@ -210,6 +222,13 @@ class News_model extends CI_Model {
 		);
 		$this->db->insert('comment', $data);
 		return $this->db->insert_id();
+	}
+
+	public function toggleComment($id_comment, $block)
+	{
+		$this->db->set('block', $block);
+		$this->db->where('id_comment', $id_comment);
+		return $this->db->update('comment');
 	}
 
 

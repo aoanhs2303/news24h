@@ -1,0 +1,49 @@
+<section class="section-addcate" ng-controller="CommentCtrl as ctrl">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Data Table With Full Features</h3>
+        </div>
+        <div class="box-body">
+          <table datatable="ng" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width: 20px">#</th>
+                <th>Tên bài báo</th>
+                <th>Người dùng</th>
+                <th>Nội dung</th>
+                <th>Ngày tạo</th>
+                <th style="width: 10%">Hành động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="(key, comment) in ctrl.commentData">
+                <td>{{ key+1 }}</td>
+                <td>{{ comment.title }}</td>
+                <td>{{ comment.username }}</td>
+                <td>{{ comment.content }}</td>
+                <td>{{ comment.time * 1000 | date:'dd-MM-yyyy' }}</td>
+                <td>
+                  <button ng-if="comment.block == '0'" ng-click="blockComment(comment)" class="btn bg-navy btn-flat btn-sm">Block</i></button>
+                  <button ng-if="comment.block == '1'" ng-click="blockComment(comment)" class="btn btn-warning btn-flat btn-sm">Unblock</i></button>
+                </td>
+              </tr>
+
+            </tbody>
+            <tfoot>
+              <tr>
+                <th style="width: 40px">#</th>
+                <th>Tên bài báo</th>
+                <th style="width: 240px">Hình ảnh</th>
+                <th>Nội dung</th>
+                <th>Ngày tạo</th>
+                <th>Hành động</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
