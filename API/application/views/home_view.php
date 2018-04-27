@@ -187,26 +187,29 @@
 		<div class="container">
 			
 			<div class="row">
-				<div class="col-md-8" id="post-data">
-					<div class="section-head">
-						<h3>ĐỪNG BỎ LỞ</h3>
-					</div>
-					<?php foreach ($other_article as $nb) { ?>
-					<div class="new-post1 pb-2">
-						<div class="row">
-							<a href="<?php echo base_url() ?>home/detail/<?php echo $ts['id_article'] ?>">
-							<div class="col-md-3 pr-0">
-								<img style="width: 210px; height: 140px" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">	
-							</div>
-							<div class="col-md-9">
-								<h4><a href="<?php echo base_url() ?>home/detail/<?php echo $nb['id_article'] ?>"><?php echo $nb['title'] ?></a></h4>
-								<p><?php echo $nb['brief_content'] ?></p>	
-								<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2018</span>
-							</div>
-							</a>
+				<div class="col-md-8" >
+					<div id="post-data" >
+						<div class="section-head">
+							<h3>ĐỪNG BỎ LỞ</h3>
 						</div>
+						<?php foreach ($other_article as $nb) { ?>
+						<div class="new-post1 pb-2">
+							<div class="row">
+								<a href="<?php echo base_url() ?>home/detail/<?php echo $ts['id_article'] ?>">
+								<div class="col-md-3 pr-0">
+									<img style="width: 210px; height: 140px" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">	
+								</div>
+								<div class="col-md-9">
+									<h4><a href="<?php echo base_url() ?>home/detail/<?php echo $nb['id_article'] ?>"><?php echo $nb['title'] ?></a></h4>
+									<p><?php echo $nb['brief_content'] ?></p>	
+									<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2018</span>
+								</div>
+								</a>
+							</div>
+						</div>
+						<?php } ?>
 					</div>
-					<?php } ?>
+					<button id="ajax_load" class="btn btn-danger read-more">Xem thêm <i class="fa fa-refresh fa-spin"></i></button>
 				</div>
 				<div class="col-md-4">
 					<div class="section-head">
@@ -250,12 +253,16 @@
 	<script type="text/javascript">
 
 		var page = 1;
-		$(window).scroll(function() {
-		    if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		        page++;
-		        loadMoreData(page);
-		    }
-		});
+		// $(window).scroll(function() {
+		//     if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+		//         page++;
+		//         loadMoreData(page);
+		//     }
+		// });
+		$('#ajax_load').click(function() {
+			page++;
+	        loadMoreData(page);
+		})
 		function loadMoreData(page){
 		  $.ajax(
 		        {

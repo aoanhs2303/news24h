@@ -1,7 +1,7 @@
 var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanitize', 'ui.select', 'ngCookies']);
 
 app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
-	$rootScope.BASEURL = 'http://localhost/news24h/api/uploads/';
+	$rootScope.BASEURL = 'http://localhost/news24h/API/uploads/';
 	// var get_session = 'http://localhost/news24h/API/news/getSession';
 	// $http.get(get_session)
 	// .then(function(res){
@@ -47,6 +47,10 @@ app.config(function ($routeProvider, $locationProvider) {
 	.when('/comment', {
 		templateUrl: 'angular_route/comment.html',
 		controller: 'CommentCtrl'
+	})
+	.when('/history', {
+		templateUrl: 'angular_route/history.html',
+		controller: 'HistoryCtrl'
 	})
 	.otherwise({ redirectTo: '/' })
 })

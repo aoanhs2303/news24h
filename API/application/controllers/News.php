@@ -121,6 +121,11 @@ class News extends CI_Controller {
 		echo $this->News_model->toggleComment($id_comment, $block);
 	}
 
+	public function getAllLog()
+	{
+		echo $this->News_model->getAllLog();
+	}
+
 }
 
 /* End of file News.php */

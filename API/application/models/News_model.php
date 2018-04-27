@@ -231,6 +231,16 @@ class News_model extends CI_Model {
 		return $this->db->update('comment');
 	}
 
+	public function getAllLog()
+	{
+		$this->db->select('*');
+
+		$this->db->join('user', 'user.id_user = systemlog.id_user', 'left');
+		$data = $this->db->get('systemlog');
+		$data = $data->result_array();
+		return json_encode($data);
+	}
+
 
 }
 
