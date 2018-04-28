@@ -24,7 +24,6 @@ angular.module('myApp')
 			name: item.name,
 			code_name: item.code_name
 		});
-		console.log(data);
 
 		var config = {
 			headers: {
@@ -43,6 +42,9 @@ angular.module('myApp')
 				}, function(res){})
 			}
 		}, function(err){})
+		var log_content = 'Sửa danh mục: ' + item.name;
+		var log_iduser = $rootScope.log_iduser;
+		$scope.systemlog(log_content, log_iduser);
 	}
 
 	$scope.addCate = function() {
@@ -66,6 +68,9 @@ angular.module('myApp')
 					$scope.cateData = res.data;
 					$scope.showSimpleToast('✔ Thêm thành công');	
 				}, function(res){})
+				var log_content = 'Thêm danh mục mới: ' + $scope.addcate__name;
+				var log_iduser = $rootScope.log_iduser;
+				$scope.systemlog(log_content, log_iduser);
 				$scope.addcate__name = "";
 				$scope.addcate__code = "";
 			}
@@ -93,23 +98,25 @@ angular.module('myApp')
 				}, function(res){})
 			}
 		}, function(err){})
+		var log_content = 'Thêm xóa danh mục: ' + item.name;
+		var log_iduser = $rootScope.log_iduser;
+		$scope.systemlog(log_content, log_iduser);
 	}
 
-	// $scope.systemlog = function() {
+	$scope.systemlog = function(content, id_user) {
+		var data = $.param({
+			log_content: content,
+			log_iduser: id_user
+		});
 
-	// 	var data = $.param({
-	// 		username: $scope.,
-	// 		password: $scope.
-	// 	});
-
-	// 	var config = {
-	// 		headers: {
-	// 			'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
-	// 		}
-	// 	}
-	// 	$http.post('',data,config)
-	// 	.then(function(res){res.data}, function(err){})
-	// }
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		.then(function(res){}, function(err){})
+	}
 
 	var last = {
 		bottom: false,

@@ -13,9 +13,8 @@ angular.module('Authentication')
             AuthenticationService.Login($scope.username, $scope.password, function(response) {
                 if(response.success) {
                     AuthenticationService.SetCredentials($scope.username, $scope.password);
-                    // $rootScope.login_name = "Admin";
-                    // var favoriteCookie = $cookies.get('myFavorite');
-                    $cookies.put('myFavorite', $scope.username);
+                    $cookies.put('login_name', $scope.username);
+                    $cookies.put('login_iduser', response.id_user);
                     $location.path('/');
                 } else {
                     $scope.error = response.message;

@@ -241,7 +241,24 @@ class News_model extends CI_Model {
 		return json_encode($data);
 	}
 
+	public function addLog($content, $id_user)
+	{
+		$data = array('content' => $content, 'id_user' => $id_user);
+		$this->db->insert('systemlog', $data);
+		return $this->db->insert_id();
+	}
 
+	public function addAccount($username, $email, $password, $id_usertype)
+	{
+		$data = array(
+			'username' => $username,
+			'email' => $email,
+			'password' => $password,
+			'id_usertype' => $id_usertype
+		);
+		$this->db->insert('user', $data);
+		return $this->db->insert_id();
+	}
 }
 
 /* End of file News_model.php */

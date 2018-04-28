@@ -126,7 +126,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">HEADER {{ test }}</li>
+          <li class="header">CATALOG</li>
           <!-- Optionally, you can add icons to the links -->
           <li ng-class="{active : activeMenu == 'Cate'}">
             <a ng-click="activeMenu = 'Cate'" href="category"><i class="fa fa-hashtag"></i> <span>Danh mục</span></a>
@@ -149,6 +149,10 @@
           </li>
           <li ng-class="{active : activeMenu == 'SystemLog'}">
             <a ng-click="activeMenu = 'SystemLog'" href="history"><i class="fa fa-history"></i> <span>Lịch sử hệ thống</span></a>
+          </li>
+          <li class="header">TÀI KHOẢN</li>
+          <li ng-class="{active : activeMenu == 'addAccount'}">
+            <a ng-click="activeMenu = 'addAccount'" href="account"><i class="fa fa-plus-square"></i> <span>Tạo tài khoản</span></a>
           </li>
         </ul>
         <!-- /.sidebar-menu -->

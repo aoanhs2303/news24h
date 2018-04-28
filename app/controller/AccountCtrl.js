@@ -1,45 +1,55 @@
 var app = angular.module('myApp')
-app.controller('CommentCtrl',  function($scope, $http, $routeParams, $rootScope, $mdToast){
-	$rootScope.header_name = 'BÌNH LUẬN';
-	$rootScope.header_subname = 'Quản lý bình luận';
-	$rootScope.activeMenu = 'Comment';
+app.controller('AccountCtrl',  function($scope, $http, $routeParams, $rootScope, $mdToast){
+	$rootScope.header_name = 'TÀI KHOẢN AUTHOR & ADMIN';
+	$rootScope.header_subname = 'Quản lý tài khoản';
+	$rootScope.activeMenu = 'addAccount';
 
-	var vm = this;
-	var get_apiURL = 'http://localhost/news24h/API/News/getAllComment';
-	$http.get(get_apiURL)
-	.then(function(res){
-		vm.commentData = res.data;
-	}, function(res){})
-
-	$scope.blockComment = function(item) {
-		var log_content = '';
-		if(item.block == 0) {
-			item.block = 1;
-			log_content = 'Block comment: ' + item.content;
-		} else {
-			item.block = 0;
-			log_content = 'Unblock comment: ' + item.content
-		}
+	$scope.addAuthor = function() {
 		var data = $.param({
-			id_comment: item.id_comment,
-			block: item.block,
+			username: $scope.username,
+			email: $scope.email,
+			password: $scope.password,
+			id_usertype: 2
 		});
 		var config = {
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		var editUrl = 'http://localhost/news24h/API/News/toggleComment';
-		$http.post(editUrl,data,config)
-		.then(function(res) {
-			if(res) {
-				$scope.showSimpleToast('✔ Thành công');	
-			}
+		$http.post('http://localhost/news24h/API/news/addAccount',data,config)
+		.then(function(res){
+			$scope.showSimpleToast('✔ Thêm tài khoản thành công');	
 		}, function(err){})
-
-		
+		var log_content = 'Thêm tài khoản cho tác giả: ' + $scope.username;
 		var log_iduser = $rootScope.log_iduser;
 		$scope.systemlog(log_content, log_iduser);
+		$scope.username = "";
+		$scope.email = "";
+		$scope.password = "";
+	}
+
+	$scope.addAdmin = function() {
+		var data = $.param({
+			username: $scope.username_2,
+			email: $scope.email_2,
+			password: $scope.password_2,
+			id_usertype: 1
+		});
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		$http.post('http://localhost/news24h/API/news/addAccount',data,config)
+		.then(function(res){
+			$scope.showSimpleToast('✔ Thêm tài khoản thành công');	
+		}, function(err){})
+		var log_content = 'Thêm tài khoản admin cho: ' + $scope.username_2;
+		var log_iduser = $rootScope.log_iduser;
+		$scope.systemlog(log_content, log_iduser);
+		$scope.username_2 = "";
+		$scope.email_2 = "";
+		$scope.password_2 = "";
 	}
 
 	$scope.systemlog = function(content, id_user) {
@@ -93,7 +103,7 @@ app.controller('CommentCtrl',  function($scope, $http, $routeParams, $rootScope,
 			.textContent(message)
 			.position(pinTo )
 			.hideDelay(2000)
-		);
+			);
 	};
 
 })

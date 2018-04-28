@@ -6,22 +6,12 @@
           <!-- The time line -->
 
           <ul class="timeline">
-              <li class="time-label" ng-repeat-start="log in logData">
-                  <span class="bg-red">
-                      {{ log.created_date * 1000 | date:'dd-MM-yyyy'}}
-                  </span>
-              </li>
-              <li ng-repeat-end>
-                  <i class="fa fa-envelope bg-blue"></i>
-                  <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> {{ log.created_date * 1000 | date:'h:mm:ss a'}}</span>
-
-                      <h3 class="timeline-header"><a href="#">Tên: </a> {{log.username}}</h3>
-
-                      <div class="timeline-body">
-                        {{log.content}}
-                      </div>
-                  </div>
+              <li ng-repeat="log in logData">
+                <i class="fa fa-user bg-aqua"></i>
+                <div class="timeline-item">
+                  <span class="time"><i class="fa fa-clock-o"></i> {{ log.created_date * 1000 | date:'dd-MM-yyyy'}}</span>
+                  <h3 class="timeline-header no-border"><a href="#">{{log.username}}</a> {{log.content}}</h3>
+                </div>
               </li>
           </ul>
         </div>

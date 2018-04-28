@@ -4,22 +4,9 @@ angular.module('Authentication')
  
 .factory('AuthenticationService',
     ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
+    function (Base64, $http, $cookieStore, $rootScope, $timeout, $scope) {
         var service = {};
         service.Login = function (username, password, callback) {
-
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
-            // $timeout(function(){
-            //     var response = { success: username === 'test' && password === 'test' };
-            //     if(!response.success) {
-            //         response.message = 'Username or password is incorrect';
-            //     }
-            //     callback(response);
-            // }, 1000);
-
-            /* Use this for real authentication
-             ----------------------------------------------*/
             var data = $.param({
                 username: username,
                 password: password
@@ -33,26 +20,16 @@ angular.module('Authentication')
             $http.post('http://localhost/news24h/API/login/authentication',data,config)
             .success(function(res){
                 if(res.usertype == 1) {
-                    var response = { success: username === res.username && true };
+                    var password = res.id_user;
+                    var response = { success: username === res.username && true, id_user: res.id_user};
                     callback(response);
                 }
                 else {
                     var response = { error: response = 'Username or password is incorrect' };
-                    // response.message = 'Username or password is incorrect';
                     callback(response);
-                    // console.log(response);
                 }
 
             }, function(err){})
-
-
-
-            // $http.post('http://localhost/news24h/API/login/authentication', { username: username, password: password }, config)
-            //    .then(function (response) {
-            //         // var response = { success: username === 'admin' && password === 'admin' };
-            //         // console.log(response);
-            //         // callback(response);
-            //    });
 
         };
  

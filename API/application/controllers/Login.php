@@ -53,10 +53,10 @@ class Login extends CI_Controller {
 		if ($data && $data[0]['id_usertype'] == 1) {
             $_SESSION["Username"] = $data[0]["username"];
             $this->session->unset_userdata("ErrorMessage");
-            // redirect('http://localhost/news24h/');
             $response = array(
             	'usertype' => $data[0]['id_usertype'],
-            	'username' => $data[0]['username']
+            	'username' => $data[0]['username'],
+            	'id_user'  => $data[0]['id_user']
             );
 
         	echo json_encode($response);

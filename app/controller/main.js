@@ -3,8 +3,10 @@ var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanit
 
 app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
 	$rootScope.BASEURL = 'http://localhost/news24h/API/uploads/';
-	var favoriteCookie = $cookies.get('myFavorite');
-	$rootScope.login_name = favoriteCookie;
+	var log_username = $cookies.get('login_name');
+	var log_iduser = $cookies.get('login_iduser');
+	$rootScope.login_name = log_username;
+	$rootScope.log_iduser = log_iduser;
 })
 
 app.config(function ($routeProvider, $locationProvider) {
@@ -45,6 +47,10 @@ app.config(function ($routeProvider, $locationProvider) {
 	.when('/login', {
         controller: 'LoginController',
         templateUrl: 'modules/authentication/views/login.html'
+    })
+    .when('/account', {
+    	templateUrl: 'angular_route/add_account.html',
+    	controller: 'AccountCtrl'
     })
 	.otherwise({ redirectTo: '/' })
 })

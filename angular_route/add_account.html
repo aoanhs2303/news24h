@@ -1,0 +1,82 @@
+<section class="section-addcate" ng-controller="AccountCtrl">
+	<section class="content">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title">Tạo tài khoản Author</h3>
+					</div>
+					<!-- /.box-header -->
+					<!-- form start -->
+					<form class="form-horizontal" name="formAuthor">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+								<div class="col-sm-10">
+									<input type="text" ng-model="username" name="username" class="form-control" id="inputEmail3" placeholder="Nhập tài khoản" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-10">
+									<input type="email" ng-model="email" name="email" class="form-control" id="inputEmail3" placeholder="Nhập Email">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+								<div class="col-sm-10">
+									<input type="password" ng-model="password" name="password" class="form-control" id="inputPassword3" placeholder="Nhập password" required>
+								</div>
+							</div>
+						</div>
+						<!-- /.box-body -->
+						<div class="box-footer">
+							<button 
+								ng-disabled="formAuthor.email.$error.email || formAuthor.username.$error.required || formAuthor.password.$error.required" ng-click="addAuthor()" type="button" class="btn btn-info pull-right">Đăng ký</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<div class="col-md-6">
+				<div class="box box-success">
+					<div class="box-header with-border">
+						<h3 class="box-title">Tạo tài khoản Admin</h3>
+					</div>
+					<!-- /.box-header -->
+					<!-- form start -->
+					<form class="form-horizontal" name="formAdmin">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+								<div class="col-sm-10">
+									<input type="text" ng-model="username_2" name="username_2" class="form-control" id="inputEmail3" placeholder="Nhập tài khoản" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-10">
+									<input type="email" ng-model="email_2" name="email_2" class="form-control" id="inputEmail3" placeholder="Nhập Email">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+								<div class="col-sm-10">
+									<input type="password" ng-model="password_2" name="password_2" class="form-control" id="inputPassword3" placeholder="Nhập password" required>
+								</div>
+							</div>
+						</div>
+						<!-- /.box-body -->
+						<div class="box-footer">
+							<button 
+								ng-disabled="formAuthor.email_2.$error.email || formAuthor.username_2.$error.required || formAuthor.password_2.$error.required" ng-click="addAdmin()" type="button" class="btn btn-info pull-right">Đăng ký</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</section>

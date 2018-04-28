@@ -129,6 +129,18 @@ class News extends CI_Controller {
 	public function addLog()
 	{
 		$content = $this->input->post('log_content');
+		$id_user = $this->input->post('log_iduser');
+		echo $this->News_model->addLog($content, $id_user);
+	}
+
+	public function addAccount()
+	{
+		$username = $this->input->post('username');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$id_usertype = $this->input->post('id_usertype');
+
+		echo $this->News_model->addAccount($username, $email, $password, $id_usertype);
 		
 	}
 
