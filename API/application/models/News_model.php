@@ -64,6 +64,15 @@ class News_model extends CI_Model {
 		return $data;
 	}
 
+	public function get5Article()
+	{
+		$this->db->select('*');
+		$this->db->join('category', 'category.id_category = article.id_category', 'left');
+		$data = $this->db->get('article', 5);
+		$data = $data->result_array();
+		return $data;
+	}
+
 	public function getArticleByID($id)
 	{
 		$this->db->select('*');
@@ -234,9 +243,19 @@ class News_model extends CI_Model {
 	public function getAllLog()
 	{
 		$this->db->select('*');
-
+		$this->db->order_by('id_systemlog', 'desc');
 		$this->db->join('user', 'user.id_user = systemlog.id_user', 'left');
 		$data = $this->db->get('systemlog');
+		$data = $data->result_array();
+		return json_encode($data);
+	}
+
+	public function get5Log()
+	{
+		$this->db->select('*');
+		$this->db->order_by('id_systemlog', 'desc');
+		$this->db->join('user', 'user.id_user = systemlog.id_user', 'left');
+		$data = $this->db->get('systemlog', 5);
 		$data = $data->result_array();
 		return json_encode($data);
 	}
@@ -259,6 +278,14 @@ class News_model extends CI_Model {
 		$this->db->insert('user', $data);
 		return $this->db->insert_id();
 	}
+
+	public function countView()
+	{
+		$this->db->select_sum('view');
+		$result = $this->db->get('article')->row();  
+		return $result->view;
+	}
+
 }
 
 /* End of file News_model.php */

@@ -8,6 +8,5 @@ app.controller('HistoryCtrl',  function($scope, $http, $routeParams, $rootScope,
 	$http.get(get_apiURL)
 	.then(function(res){
 		$scope.logData = res.data;
-		console.log(res.data)
 	}, function(res){})
 })

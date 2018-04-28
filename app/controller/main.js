@@ -7,14 +7,23 @@ app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
 	var log_iduser = $cookies.get('login_iduser');
 	$rootScope.login_name = log_username;
 	$rootScope.log_iduser = log_iduser;
+
+	$scope.colors = [
+	    "label-danger",
+	    "label-primary",
+	    "label-success",
+	    "label-info",
+	    "label-warning"
+	];
+
 })
 
 app.config(function ($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	$routeProvider
 	.when('/', {
-		templateUrl: 'angular_route/list_article.html',
-		controller: 'List_ArticleCtrl'
+		templateUrl: 'angular_route/home.html',
+		controller: 'HomeCtrl'
 	})
 	.when('/category', {
 		templateUrl: 'angular_route/category.html',
@@ -70,3 +79,16 @@ function ($rootScope, $location, $cookieStore, $http) {
         }
     });
 }]);
+
+app.directive("ngRandomClass", function () {
+return {
+    restrict: 'EA',
+    replace: false,
+    scope: {
+        ngClasses: "=ngRandomClass"
+    },
+    link: function (scope, elem, attr) {            
+        //Add random background class to selected element
+        elem.addClass(scope.ngClasses[Math.floor(Math.random() * (scope.ngClasses.length))]);
+    }
+}});

@@ -140,8 +140,42 @@ class News extends CI_Controller {
 		$password = $this->input->post('password');
 		$id_usertype = $this->input->post('id_usertype');
 
-		echo $this->News_model->addAccount($username, $email, $password, $id_usertype);
+		echo $this->News_model->addAccount($username, $email, md5($password), $id_usertype);
 		
+	}
+
+	public function countArticle()
+	{
+		$query = $this->db->get('article');
+		echo $query->num_rows();
+	}
+
+	public function countComment()
+	{
+		$query = $this->db->get('comment');
+		echo $query->num_rows();
+	}
+
+	public function countView()
+	{
+		$data = $this->News_model->countView();
+		echo $data;
+	}
+
+	public function countUser()
+	{
+		$query = $this->db->get('user');
+		echo $query->num_rows();
+	}
+
+	public function get5Log()
+	{
+		echo $this->News_model->get5Log();
+	}
+
+	public function get5Article()
+	{
+		echo json_encode($this->News_model->get5Article());
 	}
 
 }

@@ -60,28 +60,10 @@
                     <small>Member since Nov. 2012</small>
                   </p>
                 </li>
-                <!-- Menu Body -->
-                <li class="user-body">
-                  <div class="row">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </div>
-                  <!-- /.row -->
-                </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  </div>
-                  <div class="pull-right">
-                    <a href="login" class="btn btn-default btn-flat">Sign out</a>
+                  <div>
+                    <a href="login" class="btn btn-danger btn-block btn-flat">Sign out</a>
                   </div>
                 </li>
               </ul>
@@ -127,9 +109,16 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">CATALOG</li>
+          <li ng-class="{active : activeMenu == 'Home'}">
+            <a ng-click="activeMenu = 'Home'" href="trangchu"><i class="fa fa-home"></i> <span>Dashboard</span> <span class="pull-right-container">
+              <span class="label label-success pull-right">Home</span>
+            </span></a>
+          </li>
           <!-- Optionally, you can add icons to the links -->
           <li ng-class="{active : activeMenu == 'Cate'}">
-            <a ng-click="activeMenu = 'Cate'" href="category"><i class="fa fa-hashtag"></i> <span>Danh mục</span></a>
+            <a ng-click="activeMenu = 'Cate'" href="category"><i class="fa fa-hashtag"></i> <span>Danh mục</span> <span class="pull-right-container">
+              <span class="label label-primary pull-right">10</span>
+            </span></a>
           </li>
           
           <li ng-class="{active : activeMenu == 'Article'}" class="treeview">
@@ -139,20 +128,34 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a ng-click="activeMenu = 'Article'" href="article">Thêm mới</a></li>
+              <li><a ng-click="activeMenu = 'Article'" href="article">Thêm mới <span class="pull-right-container">
+              <span class="label label-success pull-right">Add</span>
+            </span></a></li>
               <li><a ng-click="activeMenu = 'Article'" href="list_article">Danh sách bài báo</a></li>
-              <li><a ng-click="activeMenu = 'Article'" href="hot_article">Bài viết nổi bật</a></li>
+              <li><a ng-click="activeMenu = 'Article'" href="hot_article">Bài viết nổi bật <span class="pull-right-container">
+              <span class="label label-danger pull-right">HOT</span>
+            </span></a></li>
             </ul>
           </li>
           <li ng-class="{active : activeMenu == 'Comment'}">
-            <a ng-click="activeMenu = 'Comment'" href="comment"><i class="fa fa-comments"></i> <span>Bình luận</span></a>
-          </li>
-          <li ng-class="{active : activeMenu == 'SystemLog'}">
-            <a ng-click="activeMenu = 'SystemLog'" href="history"><i class="fa fa-history"></i> <span>Lịch sử hệ thống</span></a>
+            <a ng-click="activeMenu = 'Comment'" href="comment"><i class="fa fa-comments"></i> <span>Bình luận</span> <span class="pull-right-container">
+              <span class="label label-warning pull-right">3 block comment</span>
+            </span></a>
           </li>
           <li class="header">TÀI KHOẢN</li>
           <li ng-class="{active : activeMenu == 'addAccount'}">
             <a ng-click="activeMenu = 'addAccount'" href="account"><i class="fa fa-plus-square"></i> <span>Tạo tài khoản</span></a>
+          </li>
+          <li ng-class="{active : activeMenu == 'addAccount'}">
+            <a ng-click="activeMenu = 'addAccount'" href="account"><i class="fa fa-edit"></i> <span>Cập nhật tài khoản</span> <span class="pull-right-container">
+              <span class="label label-info pull-right">NEW</span>
+            </span></a>
+          </li>
+          <li class="header">HỆ THỐNG</li>
+          <li ng-class="{active : activeMenu == 'SystemLog'}">
+            <a ng-click="activeMenu = 'SystemLog'" href="history"><i class="fa fa-history"></i> <span>Lịch sử hệ thống</span> <span class="pull-right-container">
+              <span class="label label-danger pull-right">3</span>
+            </span></a>
           </li>
         </ul>
         <!-- /.sidebar-menu -->

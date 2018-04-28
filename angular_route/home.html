@@ -1,0 +1,169 @@
+<section class="section-addcate" ng-controller="HomeCtrl">
+	<section class="content">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="info-box bg-aqua">
+					<span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Bài báo</span>
+						<span class="info-box-number">{{ numArt }}</span>
+
+						<div class="progress">
+							<div class="progress-bar" style="width: 70%"></div>
+						</div>
+						<span class="progress-description">
+							Tổng số bài báo hiện có
+						</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="info-box bg-green">
+					<span class="info-box-icon"><i class="fa fa-globe"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Lượt xem</span>
+						<span class="info-box-number">{{ numView }}</span>
+						<div class="progress">
+							<div class="progress-bar" style="width: 70%"></div>
+						</div>
+						<span class="progress-description">
+							Tổng số lượt xem của trang web
+						</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="info-box bg-yellow">
+					<span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Người dùng</span>
+						<span class="info-box-number">{{ numUser }}</span>
+
+						<div class="progress">
+							<div class="progress-bar" style="width: 70%"></div>
+						</div>
+						<span class="progress-description">
+							Số người dùng
+						</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="info-box bg-red">
+					<span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Bình luận</span>
+						<span class="info-box-number">{{ numCmt }}</span>
+
+						<div class="progress">
+							<div class="progress-bar" style="width: 70%"></div>
+						</div>
+						<span class="progress-description">
+							Tổng số bình luận
+						</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Bài viết mới nhất</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th style="width: 100px">Ngày đăng</th>
+                    <th>Hình ảnh</th>
+                    <th>Tiêu đề</th>
+                    <th>Danh mục</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="art in artData">
+                    <td><a href="pages/examples/invoice.html">{{ art.created_date * 1000 | date:'dd-MM-yyyy'}}</a></td>
+                    <td><img style="height: 40px" ng-src="{{BASEURL}}{{ art.image }}" alt=""></td>
+                    <td>{{ art.title }}</td>
+                    <td><span ng-random-class="colors" class="label">{{ art.name }}</span></td>
+                    
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <a href="list_article" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+			</div>
+			<div class="col-md-4">
+				<div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Các hoạt đồng gần đây</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <ul class="products-list product-list-in-box">
+                <li class="item" ng-repeat="log in logData">
+                  <div class="product-img">
+                    <img src="dist/img/default-50x50.gif" alt="Product Image">
+                  </div>
+                  <div class="product-info">
+                    <a href="javascript:void(0)" class="product-title">{{ log.username }}
+                      <span ng-random-class="colors" class="label pull-right">{{ log.created_date * 1000 | date:'dd-MM-yyyy'}}</span></a>
+                    	<span class="product-description">
+                          {{ log.content }}
+                        </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+              <a href="history" class="uppercase">Xem tất cả</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+			</div>
+		</div>
+
+
+
+	</section>
+
+</section>
