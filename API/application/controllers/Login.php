@@ -53,7 +53,13 @@ class Login extends CI_Controller {
 		if ($data && $data[0]['id_usertype'] == 1) {
             $_SESSION["Username"] = $data[0]["username"];
             $this->session->unset_userdata("ErrorMessage");
-            redirect('http://localhost/news24h/');
+            // redirect('http://localhost/news24h/');
+            $response = array(
+            	'usertype' => $data[0]['id_usertype'],
+            	'username' => $data[0]['username']
+            );
+
+        	echo json_encode($response);
         }
         else if ($data && $data[0]['id_usertype'] == 3) {
             $_SESSION["user"] = $data[0]["username"];
@@ -64,7 +70,7 @@ class Login extends CI_Controller {
         }
         else {
         	$_SESSION["ErrorMessage"] = "Incorrect username or password";
-        	redirect(base_url().'login');
+        	// redirect(base_url().'login');
         }
 
 	}

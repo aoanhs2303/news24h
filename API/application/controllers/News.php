@@ -126,6 +126,12 @@ class News extends CI_Controller {
 		echo $this->News_model->getAllLog();
 	}
 
+	public function addLog()
+	{
+		$content = $this->input->post('log_content');
+		
+	}
+
 }
 
 /* End of file News.php */

@@ -48,7 +48,7 @@
                 <!-- The user image in the navbar-->
                 <img src="dist/img/avatar5.png" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Trần Như Lực</span>
+                <span class="hidden-xs">{{ login_name }}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
@@ -56,7 +56,7 @@
                   <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
 
                   <p>
-                    Trần Như Lực - Web Developer
+                    {{ login_name }} - Web Developer
                     <small>Member since Nov. 2012</small>
                   </p>
                 </li>
@@ -81,7 +81,7 @@
                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="pull-right">
-                    <a href="http://localhost/news24h/API/login/logout" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="login" class="btn btn-default btn-flat">Sign out</a>
                   </div>
                 </li>
               </ul>
@@ -106,7 +106,7 @@
             <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Trần Như Lực</p>
+            <p>{{ login_name }}</p>
             <!-- Status -->
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>

@@ -95,6 +95,22 @@ angular.module('myApp')
 		}, function(err){})
 	}
 
+	// $scope.systemlog = function() {
+
+	// 	var data = $.param({
+	// 		username: $scope.,
+	// 		password: $scope.
+	// 	});
+
+	// 	var config = {
+	// 		headers: {
+	// 			'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+	// 		}
+	// 	}
+	// 	$http.post('',data,config)
+	// 	.then(function(res){res.data}, function(err){})
+	// }
+
 	var last = {
 		bottom: false,
 		top: true,

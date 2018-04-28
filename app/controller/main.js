@@ -1,20 +1,10 @@
-var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanitize', 'ui.select', 'ngCookies']);
+angular.module('Authentication', []);
+var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanitize', 'ui.select', 'ngCookies', 'Authentication']);
 
 app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
 	$rootScope.BASEURL = 'http://localhost/news24h/API/uploads/';
-	// var get_session = 'http://localhost/news24h/API/news/getSession';
-	// $http.get(get_session)
-	// .then(function(res){
-	// 	  $scope.myCookie = $cookies.get('username')
-	// 	  var favoriteCookie = $cookies.get('username');
-	// 	  var user = res.data;
-	// 	  $cookies.put('username', user);
-	// }, function(res){})
-	// if($cookies.get('username')) {
-		
-	// } else {
-	// 	window.location.href = "http://localhost/news24h/API/login";
-	// }
+	var favoriteCookie = $cookies.get('myFavorite');
+	$rootScope.login_name = favoriteCookie;
 })
 
 app.config(function ($routeProvider, $locationProvider) {
@@ -52,5 +42,25 @@ app.config(function ($routeProvider, $locationProvider) {
 		templateUrl: 'angular_route/history.html',
 		controller: 'HistoryCtrl'
 	})
+	.when('/login', {
+        controller: 'LoginController',
+        templateUrl: 'modules/authentication/views/login.html'
+    })
 	.otherwise({ redirectTo: '/' })
 })
+
+.run(['$rootScope', '$location', '$cookieStore', '$http',
+function ($rootScope, $location, $cookieStore, $http) {
+    // keep user logged in after page refresh
+    $rootScope.globals = $cookieStore.get('globals') || {};
+    if ($rootScope.globals.currentUser) {
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+    }
+
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in
+        if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+            $location.path('/login');
+        }
+    });
+}]);
