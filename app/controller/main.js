@@ -61,6 +61,10 @@ app.config(function ($routeProvider, $locationProvider) {
     	templateUrl: 'angular_route/add_account.html',
     	controller: 'AccountCtrl'
     })
+    .when('/edit', {
+    	templateUrl: 'angular_route/edit_account.html',
+    	controller: 'EditAccountCtrl'
+    })
 	.otherwise({ redirectTo: '/' })
 })
 

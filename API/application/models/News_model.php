@@ -279,6 +279,24 @@ class News_model extends CI_Model {
 		return $this->db->insert_id();
 	}
 
+	public function getUserById($id_user)
+	{
+		$this->db->select('*');
+		$this->db->where('id_user', $id_user);
+		$data = $this->db->get('user');
+		$data = $data->result_array();
+		return json_encode($data);
+	}
+
+	public function editUserById($id_user, $fullname, $email, $sdt)
+	{
+		$this->db->set('fullname', $fullname);
+		$this->db->set('email', $email);
+		$this->db->set('sdt', $sdt);
+		$this->db->where('id_user', $id_user);
+		return $this->db->update('user');
+	}
+
 	public function countView()
 	{
 		$this->db->select_sum('view');

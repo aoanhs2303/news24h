@@ -1,0 +1,54 @@
+<section class="section" ng-controller="EditAccountCtrl">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="box box-primary">
+        <div class="box-body box-profile" ng-repeat="user in dataUser">
+          <img class="profile-user-img img-responsive img-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1qB5kjPUmQnnC5UNkmRqaeceqNr9lqdkLbL4amM1uzW4d_EJS" alt="User profile picture">
+          
+          
+          <div ng-show="!tgName" class="input-group" style="width: 50%; margin: 0 auto">
+            <input type="text" class="form-control" ng-model="user.fullname" placeholder="Nhập fullname">
+            <span ng-click="saveUser(user, 'fullname')" class="input-group-addon btn btn-primary" style="background-color: #3C8DBC; color: #FFF">Lưu</span>
+          </div>
+          <h3 class="profile-username text-center" ng-show="tgName">
+            <span>{{ user.fullname }}</span> &nbsp;&nbsp;<button ng-click="toggleName()" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
+          </h3>
+          <p class="text-muted text-center">{{ user.id_usertype }}</p>
+
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b>Username</b> <a class="pull-right">{{ user.username }} &nbsp;&nbsp;<button class="btn btn-primary btn-xs" disabled><i class="fa fa-pencil"></i></button></a> 
+            </li>
+
+            <li class="list-group-item" ng-show="tgEmail">
+              <b>Email</b> <a class="pull-right">{{ user.email }} &nbsp;&nbsp;<button ng-click="toggleEmail()" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a> 
+            </li>
+            <li class="list-group-item" ng-show="!tgEmail">
+              <div class="input-group" style="margin: 0 auto">
+                <input type="text" class="form-control" ng-model="user.email" placeholder="Nhập Email">
+                <span ng-click="saveUser(user, 'email')" ng-click="toggleEmail()" class="input-group-addon btn btn-primary" style="background-color: #3C8DBC; color: #FFF">Lưu</span>
+              </div>
+            </li>
+
+            <li class="list-group-item" ng-show="tgSdt">
+              <b>Số điện thoại</b> <a class="pull-right">{{ user.sdt }} &nbsp;&nbsp;<button ng-click="toggleSdt()" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a> 
+            </li>
+            <li class="list-group-item" ng-show="!tgSdt">
+              <div class="input-group" style="margin: 0 auto">
+                <input type="text" class="form-control" ng-model="user.sdt" placeholder="Nhập số điện thoại">
+                <span ng-click="saveUser(user, 'sdt')" class="input-group-addon btn btn-primary" style="background-color: #3C8DBC; color: #FFF">Lưu</span>
+              </div>
+            </li>
+
+            <li class="list-group-item">
+              <b>Mật khẩu</b> <a class="pull-right">******* &nbsp;&nbsp;<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a> 
+            </li>
+          </ul>
+
+          <a href="#" class="btn btn-primary btn-block"><b>Lưu</b></a>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+  </div>
+</section>

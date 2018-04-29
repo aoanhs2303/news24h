@@ -141,7 +141,21 @@ class News extends CI_Controller {
 		$id_usertype = $this->input->post('id_usertype');
 
 		echo $this->News_model->addAccount($username, $email, md5($password), $id_usertype);
-		
+	}
+
+	public function getUserById()
+	{
+		$id_user = $this->input->post('id_user');
+		echo $this->News_model->getUserById($id_user);
+	}
+
+	public function editUserById()
+	{
+		$id_user = $this->input->post('id_user');
+		$fullname = $this->input->post('fullname');
+		$email = $this->input->post('email');
+		$sdt = $this->input->post('sdt');
+		echo $this->News_model->editUserById($id_user, $fullname, $email, $sdt);
 	}
 
 	public function countArticle()
