@@ -342,6 +342,16 @@ class News_model extends CI_Model {
 		return $result->view;
 	}
 
+	public function searchArticle($query)
+	{
+		$this->db->select('*');
+		$this->db->from('article');
+		$this->db->or_like('article.title', $query);
+		$data = $this->db->get();
+		$data = $data->result_array();
+		return $data;
+	}
+
 }
 
 /* End of file News_model.php */

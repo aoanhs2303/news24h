@@ -106,6 +106,27 @@ class Home extends CI_Controller {
 		$this->load->view('category_view', $data_main);
 		$this->load->view('include/footer');		
 	}
+
+	public function search()
+	{
+		$query = $this->input->get('query');
+		$cate = $this->News_model->getCate();
+		$xemnhieu = $this->News_model->getXNArticle();
+		$search = $this->News_model->searchArticle($query);
+		$num_res = count($this->News_model->searchArticle($query));
+
+		$data_header = array('danhmuc' => $cate );
+		$data_main = array(
+			'xemnhieu'   => $xemnhieu,
+			'search_res' => $search,
+			'num_res'    => $num_res,
+			'query'      => $query
+		);
+		$this->load->view('include/header', $data_header);
+		$this->load->view('search_view', $data_main);
+		$this->load->view('include/footer');		
+	}
+
 }
 
 /* End of file Home.php */

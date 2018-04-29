@@ -254,12 +254,7 @@
 	<script type="text/javascript">
 
 		var page = 1;
-		// $(window).scroll(function() {
-		//     if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		//         page++;
-		//         loadMoreData(page);
-		//     }
-		// });
+
 		$('#ajax_load').click(function() {
 			page++;
 	        loadMoreData(page);

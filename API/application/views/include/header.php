@@ -53,9 +53,9 @@
 							</div>							
 						</div>
 
-						<form class="form-inline my-2 my-lg-0 search_style">
+						<form class="form-inline my-2 my-lg-0 search_style" action="<?php echo base_url() ?>home/search" method="GET">
 							<div class="input-group search_group">
-							  <input class="form-control mr-sm-2" type="text" placeholder="Nhập nội dung tìm kiếm">
+							  <input name="query" class="form-control mr-sm-2" type="text" placeholder="Nhập nội dung tìm kiếm">
 							  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
 							 </div> 	
 					    </form>
