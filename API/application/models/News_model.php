@@ -297,6 +297,13 @@ class News_model extends CI_Model {
 		return $this->db->update('user');
 	}
 
+	public function changePass($id_user, $newPass)
+	{
+		$this->db->set('password', md5($newPass));
+		$this->db->where('id_user', $id_user);
+		return $this->db->update('user');
+	}
+
 	public function countView()
 	{
 		$this->db->select_sum('view');

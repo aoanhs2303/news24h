@@ -158,6 +158,21 @@ class News extends CI_Controller {
 		echo $this->News_model->editUserById($id_user, $fullname, $email, $sdt);
 	}
 
+	public function changePass()
+	{
+		$id_user = $this->input->post('id_user');
+		$old = json_decode($this->News_model->getUserById($id_user), true)[0]['password'];
+		$oldPass = $this->input->post('oldPass');
+		$newPass = $this->input->post('newPass');
+		$reEnterNewPass = $this->input->post('reEnterNewPass');
+		if($newPass == $reEnterNewPass && $old == md5($oldPass)) {
+			echo $this->News_model->changePass($id_user, $newPass);
+		} else {
+			echo -1;
+		}
+		
+	}
+
 	public function countArticle()
 	{
 		$query = $this->db->get('article');

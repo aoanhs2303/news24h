@@ -67,6 +67,32 @@ app.controller('EditAccountCtrl',  function($scope, $http, $routeParams, $rootSc
 
 	}
 
+	$scope.changePass = function() {
+		var log_iduser = $cookies.get('login_iduser');
+		var data = $.param({
+			id_user: log_iduser,
+			oldPass: $scope.oldPass,
+			newPass: $scope.newPass,
+			reEnterNewPass: $scope.reEnterNewPass
+		});
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		$http.post('http://localhost/news24h/API/news/changePass',data,config)
+		.then(function(res){
+			if(res.data == -1) {
+				$scope.showSimpleToast('✘ Thông tin không chính xác');	
+			} else {
+				$scope.showSimpleToast('✔ Đổi mật khẩu thành công');	
+			}
+		}, function(err){})
+		$scope.oldPass = "";
+		$scope.newPass = "";
+		$scope.reEnterNewPass = "";
+	}
+
 	$scope.systemlog = function(content, id_user) {
 		var data = $.param({
 			log_content: content,
