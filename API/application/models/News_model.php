@@ -119,6 +119,17 @@ class News_model extends CI_Model {
 		return $data;
 	}
 
+	public function getLatestCate($id_category)
+	{
+		$this->db->select('*');
+		$this->db->order_by('created_date', 'desc');
+		$this->db->where('id_category', $id_category);
+		$data = $this->db->get('article', 6);
+		$data = $data->result_array();
+		return $data;
+	}
+
+
 	public function getNBArticle()
 	{
 		$this->db->select('*');
@@ -156,6 +167,26 @@ class News_model extends CI_Model {
 		$data = $this->db->get('article', 5);
 		$data = $data->result_array();
 		return $data;
+	}
+
+	public function getOtherArticleCate($id_category)
+	{
+		$this->db->select('*');
+		$this->db->order_by('id_article', 'desc');
+		$condition = array('hot !=' => 'hot', 'hot !=' => 'nb', 'id_category' => $id_category);
+		$this->db->where($condition);
+		$data = $this->db->get('article', 5);
+		$data = $data->result_array();
+		return $data;
+	}
+
+	public function getHotArticleCate($id_category)
+	{
+		$this->db->select('*');
+		$this->db->order_by('view', 'desc');
+		$this->db->where('id_category', $id_category);
+		$data = $this->db->get('article', 6);
+		return $data = $data->result_array();
 	}
 
 	public function setHotArticle($array_id)

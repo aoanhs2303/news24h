@@ -11,7 +11,7 @@
 								foreach ($hot_article as $key => $hot) { 
 								if($key < $length - 2) { ?>
 								<div class="item">
-									<a href="<?php echo base_url() ?>home/detail/<?php echo $hot['id_article'] ?>">
+									<a href="<?php echo base_url() . vn_to_str($hot['title']) .'-'. $hot['id_article']?>.chn">
 										<img src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="">
 										<div class="caption">
 											<h2><?php echo $hot['title'] ?></h2>
@@ -30,7 +30,7 @@
 						$length = count($hot_article);
 						foreach ($hot_article as $key => $hot) { 
 						if($key >= $length - 2) { ?>
-							<a href="<?php echo base_url() ?>home/detail/<?php echo $hot['id_article'] ?>">
+							<a href="<?php echo base_url() . vn_to_str($hot['title']) .'-'. $hot['id_article']?>.chn">
 								<div class="new-post" style="height: unset; padding: 3px;">
 								<div class="detail">
 									<img style="width: 100%" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="<?php echo base_url().$hot['image'] ?>" class="img-responsive">
@@ -54,14 +54,14 @@
 			<div class="row">
 				<?php foreach ($latest_article as $latest) { ?>
 				<div class="col-md-4 col-sm-4">
-					<a href="<?php echo base_url() ?>home/detail/<?php echo $latest['id_article'] ?>">
+					<a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $hot['id_article']?>.chn">
 					<div class="new-post">
 						<div class="detail">
 							<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$latest['image'] ?>" alt="<?php echo base_url().$latest['image'] ?>" class="img-responsive">
 							<p><?php echo $latest['brief_content'] ?></p>
 						</div>
-						<h4><a href=""><?php echo $latest['title'] ?></a></h4>
-						<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2018</span>
+						<h4><a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $hot['id_article']?>.chn"><?php echo $latest['title'] ?></a></h4>
+						<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $latest['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>
 					</div>	
 					</a>
 					
@@ -80,14 +80,14 @@
 			<div class="row">
 				<?php foreach ($nb_article as $nb) { ?>
 				<div class="col-md-4 col-sm-4">
-					<a href="<?php echo base_url() ?>home/detail/<?php echo $nb['id_article'] ?>">
+					<a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $nb['id_article']?>.chn">
 					<div class="new-post">
 						<div class="detail">
 							<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">
 							<p><?php echo $nb['brief_content'] ?></p>
 						</div>
-						<h4><a href=""><?php echo $nb['title'] ?></a></h4>
-						<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2018</span>
+						<h4><a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $nb['id_article']?>.chn"><?php echo $nb['title'] ?></a></h4>
+						<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $nb['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>
 						
 					</div>	
 					</a>
@@ -116,14 +116,14 @@
 					<div class="row categories-filter">
 						<?php foreach ($ts_article as $ts) { ?>
 						<div class="col-md-4 col-sm-4 filtr-item" data-category="1">
-							<a href="<?php echo base_url() ?>home/detail/<?php echo $ts['id_article'] ?>">
+							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
 									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
-								<h4><a href=""><?php echo $ts['title'] ?></a></h4>
-								<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2020</span>	
+								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
+								<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $ts['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>	
 							</div>	
 							</a>
 							
@@ -132,14 +132,14 @@
 		
 						<?php foreach ($tg_article as $ts) { ?>
 						<div class="col-md-4 col-sm-4 filtr-item" data-category="2">
-							<a href="<?php echo base_url() ?>home/detail/<?php echo $ts['id_article'] ?>">
+							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
 									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
-								<h4><a href=""><?php echo $ts['title'] ?></a></h4>
-								<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2020</span>	
+								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
+								<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $ts['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>	
 							</div>	
 							</a>
 							
@@ -148,14 +148,14 @@
 				
 						<?php foreach ($cn_article as $ts) { ?>
 						<div class="col-md-4 col-sm-4 filtr-item" data-category="3">
-							<a href="<?php echo base_url() ?>home/detail/<?php echo $ts['id_article'] ?>">
+							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
 									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
-								<h4><a href=""><?php echo $ts['title'] ?></a></h4>
-								<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2020</span>	
+								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
+								<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $ts['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>	
 							</div>	
 							</a>
 							
@@ -164,14 +164,14 @@
 					
 						<?php foreach ($gd_article as $ts) { ?>
 						<div class="col-md-4 col-sm-4 filtr-item" data-category="4">
-							<a href="<?php echo base_url() ?>home/detail/<?php echo $ts['id_article'] ?>">
+							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
 									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
-								<h4><a href=""><?php echo $ts['title'] ?></a></h4>
-								<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2020</span>	
+								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
+								<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $ts['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>	
 							</div>	
 							</a>
 							
@@ -195,14 +195,14 @@
 						<?php foreach ($other_article as $nb) { ?>
 						<div class="new-post1 pb-2">
 							<div class="row">
-								<a href="<?php echo base_url() ?>home/detail/<?php echo $ts['id_article'] ?>">
+								<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 								<div class="col-md-3 pr-0">
 									<img style="width: 210px; height: 140px" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">	
 								</div>
 								<div class="col-md-9">
-									<h4><a href="<?php echo base_url() ?>home/detail/<?php echo $nb['id_article'] ?>"><?php echo $nb['title'] ?></a></h4>
+									<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $nb['title'] ?></a></h4>
 									<p><?php echo $nb['brief_content'] ?></p>	
-									<span class="date"><i class="fa fa-clock-o"></i> 8 Dec, 2018</span>
+									<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $ts['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>
 								</div>
 								</a>
 							</div>
@@ -221,9 +221,10 @@
 						<div class="detail">
 							<img class="img-responsive" src="<?php echo base_url() ?>uploads/<?php echo $value['image'] ?>" alt="">
 							<p><?php echo $value['brief_content'] ?></p>
-							<span class="date_corner full-right"><i class="fa fa-clock-o"></i> 8 Dec, 2020</span>	
+
+							<span class="date_corner full-right"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $nb['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>	
 						</div>
-						<h5><a href="<?php echo base_url() ?>home/detail/<?php echo $value['id_article'] ?>"><?php echo $value['title'] ?></a></h5>
+						<h5><a href="<?php echo base_url() . vn_to_str($value['title']) .'-'. $value['id_article']?>.chn"><?php echo $value['title'] ?></a></h5>
 					</div>
 
 						<?php }  else {?>
@@ -233,7 +234,7 @@
 							<img class="img-responsive" src="<?php echo base_url() ?>uploads/<?php echo $value['image'] ?>" alt="">
 						</div>
 						<div class="col-md-8">
-							<h6><a href="<?php echo base_url() ?>home/detail/<?php echo $value['id_article'] ?>"><?php echo $value['title'] ?></a></h6>	
+							<h6><a href="<?php echo base_url() . vn_to_str($value['title']) .'-'. $value['id_article']?>.chn"><?php echo $value['title'] ?></a></h6>	
 						</div>
 					</div>
 					<?php }?>

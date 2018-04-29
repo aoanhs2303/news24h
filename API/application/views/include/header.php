@@ -23,6 +23,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i&amp;subset=vietnamese" rel="stylesheet">
 		<script src="<?php echo base_url() ?>vendor/js/jquery.min.js"></script>
+	<?php require_once('vn_to_str.php') ?>
 </head>
 <body>
 
@@ -66,9 +67,10 @@
 				<div class="collapse navbar-collapse n-link" id="bs-navbar">
 					<div class="container">
 						<ul class="nav navbar-nav">
-							<li><a href="category.html">Home</a></li>
+							<li><a href="<?php echo base_url()?>home">Home</a></li>
 							<?php foreach ($danhmuc as $dm) { ?>
-							<li><a href="category.html"><?php echo $dm['name'] ?></a></li>	
+
+							<li><a href="<?php echo base_url() . vn_to_str($dm['name']) .'-'. $dm['id_category']?>.cate"><?php echo $dm['name'] ?></a></li>	
 							<?php } ?>
 						</ul>
 

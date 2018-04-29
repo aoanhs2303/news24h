@@ -76,6 +76,9 @@ class Home extends CI_Controller {
 		$count = $this->db->get('article')->num_rows();
 		if(!empty($this->input->get("page"))){
 			$start = ceil($this->input->get("page") * $this->perPage);
+			if(!empty($this->input->get("id_category"))) {
+				$this->db->where('id_category', (int)$this->input->get("id_category"));
+			}
 			$query = $this->db->limit($this->perPage, $start)->get("article");
 			$data['posts'] = $query->result_array();
 			$result = $this->load->view('loadmore_view', $data, TRUE);
@@ -83,6 +86,26 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function category($id_category)
+	{
+		$cate = $this->News_model->getCate();
+		$last_news = $this->News_model->getLatestCate($id_category);
+		$hot_article = $this->News_model->getHotArticleCate($id_category);
+		$xemnhieu = $this->News_model->getXNArticle();
+		$other_article = $this->News_model->getOtherArticleCate($id_category);
+
+		$data_header = array('danhmuc' => $cate );
+		$data_main = array(
+			'nb_article'    => $hot_article,
+			'latest_article' => $last_news,
+			'xemnhieu'		 => $xemnhieu,
+			'other_article'  => $other_article
+
+		);
+		$this->load->view('include/header', $data_header);
+		$this->load->view('category_view', $data_main);
+		$this->load->view('include/footer');		
+	}
 }
 
 /* End of file Home.php */
