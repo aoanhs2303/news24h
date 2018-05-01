@@ -25,6 +25,9 @@ app.controller('List_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 		$http.post(delUrl,id_arti,config)
 		.then(function(res) {
 			if(res) {
+				var log_content = 'Xóa bài viết: ' + item.title;
+				var log_iduser = $rootScope.log_iduser;
+				$scope.systemlog(log_content, log_iduser);
 				$scope.showSimpleToast('✔ Xóa thành công');	
 				console.log(res);
 				var get_apiURL = 'http://localhost/news24h/API/news/getArticle';
@@ -35,6 +38,21 @@ app.controller('List_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 
 			}
 		}, function(err){})
+	}
+
+	$scope.systemlog = function(content, id_user) {
+		var data = $.param({
+			log_content: content,
+			log_iduser: id_user
+		});
+
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		.then(function(res){}, function(err){})
 	}
 
 	var last = {

@@ -3,6 +3,7 @@ var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanit
 
 app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
 	$rootScope.BASEURL = 'http://localhost/news24h/API/uploads/';
+	$rootScope.URL = 'http://localhost/news24h/API/home/';
 	var log_username = $cookies.get('login_name');
 	var log_iduser = $cookies.get('login_iduser');
 	$rootScope.login_name = log_username;

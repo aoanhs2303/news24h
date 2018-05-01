@@ -90,12 +90,11 @@ class News extends CI_Controller {
 	{
 		$id_article = $this->input->post('id_article');
 		$title = $this->input->post('title');
-		$image = $this->input->post('image');
 		$brief_content = $this->input->post('brief_content');
 		$content = $this->input->post('content');
 		$id_category = $this->input->post('id_category');
 	
-		echo $this->News_model->editArticleByID($id_article,$title,$image,$brief_content,$content,$id_category);
+		echo $this->News_model->editArticleByID($id_article,$title,$brief_content,$content,$id_category);
 	}
 
 	public function setHotArticle()

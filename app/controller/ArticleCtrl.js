@@ -97,6 +97,10 @@ app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpl
 		$http.post(addUrl,data,config)
 		.then(function(res) {
 			if(res) {
+				var log_content = 'Thêm bài viết: ' + $scope.add__title;
+				var log_iduser = $rootScope.log_iduser;
+				$scope.systemlog(log_content, log_iduser);
+
 				$scope.showSimpleToast('✔ Thêm thành công');	
 				$scope.add__title = "";
 				$scope.add__brief_content = "";
@@ -104,6 +108,22 @@ app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpl
 			}
 		}, function(err){})
 	}
+
+	$scope.systemlog = function(content, id_user) {
+		var data = $.param({
+			log_content: content,
+			log_iduser: id_user
+		});
+
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		.then(function(res){}, function(err){})
+	}
+
 	var last = {
 		bottom: false,
 		top: true,
