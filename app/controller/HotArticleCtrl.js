@@ -43,15 +43,29 @@ app.controller('Hot_ArticleCtrl',  function($scope, $http, $rootScope){
 		vm.allAricle = res.data;
 		vm.multipleDemo = {};
 		vm.multipleDemo.hot = [];
+
+
+		$http.get('http://localhost/news24h/API/news/getHotArticle')
+		.then(function(res){
+			vm.allAricle = res.data;
+			vm.multipleDemo = {};
+			vm.multipleDemo.hot = [];
+			for (var i = 0; i < res.data.length; i++) {
+				vm.multipleDemo.hot.push(res.data[i].id_article);
+			}
+			
+		},function(err){})
+
+
 	},function(err){})
 
+	
+
 	$scope.guidulieu = function(dulieu) {
-		var a, s;
 		dl = JSON.stringify(dulieu);
 		var data = $.param({
 			array_id: dl
 		});
-
 		var config = {
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'

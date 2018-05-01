@@ -56,6 +56,12 @@ class News extends CI_Controller {
 		echo $data;
 	}
 
+	public function getHotArticle()
+	{
+		$data = json_encode($this->News_model->getHotArticle());
+		echo $data;
+	}
+
 	public function getArticleByID()
 	{
 		$id = $this->input->post('article_id');
@@ -95,9 +101,20 @@ class News extends CI_Controller {
 	public function setHotArticle()
 	{
 		$array_id = $this->input->post('array_id');
-		// $array_id = json_encode($array_id);
-		// echo $array_id;
-		echo $this->News_model->setHotArticle($array_id);
+		$array_id = substr($array_id, 0, -1);
+		$array_id = substr($array_id, 1);
+		
+		if (strpos($array_id, ',') !== false) {
+			$array = explode(",",$array_id);
+		} else {
+			$array = array(0 => $array_id);
+		}
+		for ($i=0; $i < count($array); $i++) { 
+			$array[$i] = substr($array[$i], 0, -1);
+			$array[$i] = substr($array[$i], 1);
+			$array[$i] = (int)$array[$i];
+		}
+		echo $this->News_model->setHotArticle($array);
 	}
 
 	public function getSession()

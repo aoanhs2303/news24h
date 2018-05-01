@@ -104,6 +104,7 @@ class News_model extends CI_Model {
 	public function getHotArticle()
 	{
 		$this->db->select('*');
+		$this->db->order_by('id_article', 'desc');
 		$this->db->where('hot', 'true');
 		$data = $this->db->get('article');
 		$data = $data->result_array();
@@ -191,15 +192,16 @@ class News_model extends CI_Model {
 
 	public function setHotArticle($array_id)
 	{
-		// $id = array($array_id);
-		// foreach ($array_id as $key => $value) {
-		// 	return $value;
-		// }
-		$s = 0;
-		for ($i=1; $i <= count($array_id); $i++) { 
-			$s = $s + $i;
+		$this->db->set('hot', '');
+		$this->db->where('hot', 'true');
+		$this->db->update('article');
+
+		foreach ($array_id as $value) {
+			$this->db->set('hot', 'true');
+			$this->db->where('id_article', $value);
+			$this->db->update('article');
 		}
-		return $s;
+		return 1;
 	}
 
 	public function authenticationAdmin($user, $pass)
