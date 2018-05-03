@@ -28,7 +28,6 @@
 <body>
 
 	<header>
-			
 			<div class="container">
 				<!-- navbar -->
 				<nav class="navbar navbar-default navbar-ng">

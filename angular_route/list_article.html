@@ -11,12 +11,13 @@
                 <thead>
                 <tr>
                   <th style="width: 20px">#</th>
-                  <th>Tên bài báo</th>
-                  <th>Danh mục</th>
+                  <th style="width: 150px">Tên bài báo</th>
+                  <th style="width: 100px">Danh mục</th>
+                  <th style="width: 130px">Lượt view</th>
                   <th>Hình ảnh</th>
-                  <th>Nội dung</th>
-                  <th style="width: 55px">Ngày tạo</th>
-                  <th style="width: 10%">Hành động</th>
+                  <th style="width: 450px">Nội dung</th>
+                  <th style="width: 100px">Ngày tạo</th>
+                  <th style="width: 11%">Hành động</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,7 @@
                   <td>{{ key+1 }}</td>
                   <td>{{ art.title }}</td>
                   <td>{{ art.name }}</td>
+                  <td>{{ art.view }}</td>
                   <td><img style="width: 100px" ng-src="{{ BASEURL }}{{ art.image }}" alt=""></td>
                   <td>{{ art.brief_content }}</td>
                   <td>{{ art.created_date * 1000 | date:'dd-MM-yyyy'}}</td>

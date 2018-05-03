@@ -39,6 +39,9 @@ class Home extends CI_Controller {
 
 	public function detail($id)
 	{
+		/*View + 1*/
+		$this->News_model->viewCounter($id);
+
 		$cate = $this->News_model->getCate();
 		$detail = $this->News_model->getArticleByID($id);
 		$relate = $this->News_model->getCateArticle($detail[0]["id_category"]);

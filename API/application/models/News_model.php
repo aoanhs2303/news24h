@@ -354,6 +354,16 @@ class News_model extends CI_Model {
 		return $data;
 	}
 
+	public function viewCounter($id_article)
+	{
+		$sql = "UPDATE article SET view = view + 1 WHERE id_article = ".$id_article ;
+      	if($this->db->query($sql)) {
+      		return 1;
+      	}
+      	return -1;
+
+	}
+
 }
 
 /* End of file News_model.php */

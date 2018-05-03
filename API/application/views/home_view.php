@@ -12,7 +12,7 @@
 								if($key < $length - 2) { ?>
 								<div class="item">
 									<a href="<?php echo base_url() . vn_to_str($hot['title']) .'-'. $hot['id_article']?>.chn">
-										<img src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="">
+										<img style="height: 460px" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="">
 										<div class="caption">
 											<h2><?php echo $hot['title'] ?></h2>
 											<h6>Lorem Ipsum Dolor Sit Meta</h6>
@@ -33,7 +33,7 @@
 							<a href="<?php echo base_url() . vn_to_str($hot['title']) .'-'. $hot['id_article']?>.chn">
 								<div class="new-post" style="height: unset; padding: 3px;">
 								<div class="detail">
-									<img style="width: 100%" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="<?php echo base_url().$hot['image'] ?>" class="img-responsive">
+									<img style="width: 100%; height: 227px" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="<?php echo base_url().$hot['image'] ?>" class="img-responsive">
 									<p><?php echo $hot['title'] ?></p>
 								</div>
 							</div>
