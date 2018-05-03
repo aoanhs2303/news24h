@@ -521,3 +521,11 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+$config['protocol'] = 'smtp';
+$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+$config['smtp_user'] = 'trannhulucs2303@gmail.com';
+$config['smtp_pass'] = 'jwxiksinsogpmzcm';
+$config['smtp_port'] = '465';
+$config['mailtype'] = 'html';

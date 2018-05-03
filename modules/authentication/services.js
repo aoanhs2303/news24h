@@ -19,9 +19,9 @@ angular.module('Authentication')
             }
             $http.post('http://localhost/news24h/API/login/authentication',data,config)
             .success(function(res){
-                if(res.usertype == 1) {
+                if(res.usertype == 1 || res.usertype == 2) {
                     var password = res.id_user;
-                    var response = { success: username === res.username && true, id_user: res.id_user};
+                    var response = { success: username === res.username && true, id_user: res.id_user, usertype: res.usertype};
                     callback(response);
                 }
                 else {

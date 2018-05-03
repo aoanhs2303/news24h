@@ -127,6 +127,59 @@ class Home extends CI_Controller {
 		$this->load->view('include/footer');		
 	}
 
+	public function contact()
+	{
+		$cate = $this->News_model->getCate();
+		
+		$xemnhieu = $this->News_model->getXNArticle();
+		
+
+		$data_header = array('danhmuc' => $cate );
+		$data_main = array(
+			
+		);
+		$this->load->view('include/header', $data_header);
+		$this->load->view('contact_view', $data_main);
+		$this->load->view('include/footer');	
+	}
+
+	public function send()
+	{
+		$name = $this->input->post('contact_name');
+		$email = $this->input->post('contact_email');
+		$subject = $this->input->post('contact_subject');
+		$content = $this->input->post('contact_content');
+
+		$config = Array(
+		    'protocol' => 'smtp',
+		    'smtp_host' => 'ssl://smtp.googlemail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'trannhulucs2303@gamil.com',
+		    'smtp_pass' => 'jwxiksinsogpmzcm',
+		    'mailtype'  => 'html', 
+		    'charset'   => 'utf-8'
+		);
+
+		$this->load->library('email');
+		
+		$this->email->from($email, $name);
+		$this->email->to('trannhulucs2303@gmail.com');
+		$this->email->cc($email);
+		
+		$this->email->subject($subject);
+		$this->email->message($content);
+		
+		if($this->email->send()) {
+			$cate = $this->News_model->getCate();
+			$data_header = array('danhmuc' => $cate );
+			$this->load->view('include/header', $data_header);
+			$this->load->view('success_view');
+			$this->load->view('include/footer');
+		} else {
+			echo $this->email->print_debugger();	
+		}
+	}
+
 }
 
 /* End of file Home.php */

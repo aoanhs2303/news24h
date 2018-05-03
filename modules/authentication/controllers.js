@@ -15,6 +15,7 @@ angular.module('Authentication')
                     AuthenticationService.SetCredentials($scope.username, $scope.password);
                     $cookies.put('login_name', $scope.username);
                     $cookies.put('login_iduser', response.id_user);
+                    $cookies.put('usertype', response.usertype);
                     $location.path('/');
                 } else {
                     $scope.error = response.message;

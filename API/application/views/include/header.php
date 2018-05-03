@@ -38,9 +38,8 @@
 								<span class="sr-only"></span>
 								<i class="fa fa-bars"></i>
 							</button>
-							<a href="<?php echo base_url() ?>home" class="navbar-brand"><h1><i class="fa fa-file-text-o"></i>NEWS24H</h1></a>
+							<a href="<?php echo base_url() ?>home" class="navbar-brand"><h1><i class="fa fa-file-text-o"></i>NEWS24H</h1></a>	
 							
-
 							<div class="btn-group" style="position: absolute;top: 24px;right: 258px;">
 							  <?php if(isset($_SESSION["user"])){ ?>
 								<button type="button" class="btn btn-danger"><?php echo $_SESSION['user'] ?></button>
@@ -49,7 +48,7 @@
 							  	<a href="<?php echo base_url() ?>login" type="button" class="btn btn-outline-dark">Đăng nhập</a>
 							  	<a href="<?php echo base_url() ?>login/register" type="button" class="btn btn-outline-dark">Đăng ký</a>
 							  <?php } ?>
-							  
+							  	<a href="<?php echo base_url() ?>home/contact" type="button" class="btn btn-outline-dark">Liên hệ &nbsp;<i class="fa fa-envelope text-danger"></i></a>
 							</div>							
 						</div>
 
@@ -77,3 +76,4 @@
 					</div>
 				</div>
 			</div>
+	</header>

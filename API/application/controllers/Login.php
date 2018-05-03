@@ -50,7 +50,7 @@ class Login extends CI_Controller {
 		$pass = $this->input->post('password');
 		
 		$data = $this->News_model->authenticationAdmin($user, md5($pass));
-		if ($data && $data[0]['id_usertype'] == 1) {
+		if ($data && ($data[0]['id_usertype'] == 1 ||  $data[0]['id_usertype'] == 2)) {
             $_SESSION["Username"] = $data[0]["username"];
             $this->session->unset_userdata("ErrorMessage");
             $response = array(

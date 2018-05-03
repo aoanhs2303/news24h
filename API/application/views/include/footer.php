@@ -5,8 +5,16 @@
 					<div class="footer-content">
 						<h4 style="margin: 0px; height: 50px"><a style="padding: 0px" href="index.html" class="navbar-brand"><h1><i class="fa fa-file-text-o"></i><span class="text-danger">NEWS24H</span></h1></a></h4>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores neque porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!
+							Thực tập công nghệ phần mềm <br>
+							<b>Nhóm 51</b>
+							<ul>
+								<li><a href="">Trần Như Lực</a></li>
+								<li><a href="">Đào Huỳnh Trung</a></li>
+								<li><a href="">Nguyễn Thị Bích Vân</a></li>
+								<li><a href="">Hoàng Văn Nghĩa</a></li>
+							</ul>	
 						</p>
+						
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6">
@@ -20,7 +28,8 @@
 									<li><a href="">Văn hóa</a></li>
 									<li><a href="">Kinh tế</a></li>
 									<li><a href="">Giải trí</a></li>
-								</ul>	
+								</ul>
+								
 							</div>
 							<div class="col-sm-4">
 								<ul>

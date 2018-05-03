@@ -6,9 +6,11 @@ app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
 	$rootScope.URL = 'http://localhost/news24h/API/home/';
 	var log_username = $cookies.get('login_name');
 	var log_iduser = $cookies.get('login_iduser');
+	var usertype = $cookies.get('usertype');
 	$rootScope.login_name = log_username;
 	$rootScope.log_iduser = log_iduser;
-
+	$rootScope.usertype = usertype;
+	console.log(usertype);
 	$scope.colors = [
 	    "label-danger",
 	    "label-primary",

@@ -105,7 +105,7 @@
           </div>
         </form>
         <!-- /.search form -->
-
+        
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">CATALOG</li>
@@ -115,7 +115,7 @@
             </span></a>
           </li>
           <!-- Optionally, you can add icons to the links -->
-          <li ng-class="{active : activeMenu == 'Cate'}">
+          <li ng-show="usertype == 1" ng-class="{active : activeMenu == 'Cate'}">
             <a ng-click="activeMenu = 'Cate'" href="category"><i class="fa fa-hashtag"></i> <span>Danh mục</span> <span class="pull-right-container">
               <span class="label label-primary pull-right">10</span>
             </span></a>
@@ -131,8 +131,8 @@
               <li><a ng-click="activeMenu = 'Article'" href="article">Thêm mới <span class="pull-right-container">
               <span class="label label-success pull-right">Add</span>
             </span></a></li>
-              <li><a ng-click="activeMenu = 'Article'" href="list_article">Danh sách bài báo</a></li>
-              <li><a ng-click="activeMenu = 'Article'" href="hot_article">Bài viết nổi bật <span class="pull-right-container">
+              <li ng-show="usertype == 1"><a ng-click="activeMenu = 'Article'" href="list_article">Danh sách bài báo</a></li>
+              <li ng-show="usertype == 1"><a ng-click="activeMenu = 'Article'" href="hot_article">Bài viết nổi bật <span class="pull-right-container">
               <span class="label label-danger pull-right">HOT</span>
             </span></a></li>
             </ul>
@@ -142,17 +142,17 @@
               <span class="label label-warning pull-right">3 block comment</span>
             </span></a>
           </li>
-          <li class="header">TÀI KHOẢN</li>
-          <li ng-class="{active : activeMenu == 'addAccount'}">
+          <li ng-show="usertype == 1" class="header">TÀI KHOẢN</li>
+          <li ng-show="usertype == 1" ng-class="{active : activeMenu == 'addAccount'}">
             <a ng-click="activeMenu = 'addAccount'" href="account"><i class="fa fa-plus-square"></i> <span>Tạo tài khoản</span></a>
           </li>
-          <li ng-class="{active : activeMenu == 'EditAccount'}">
+          <li ng-show="usertype == 1" ng-class="{active : activeMenu == 'EditAccount'}">
             <a ng-click="activeMenu = 'EditAccount'" href="edit"><i class="fa fa-edit"></i> <span>Cập nhật tài khoản</span> <span class="pull-right-container">
               <span class="label label-info pull-right">NEW</span>
             </span></a>
           </li>
-          <li class="header">HỆ THỐNG</li>
-          <li ng-class="{active : activeMenu == 'SystemLog'}">
+          <li ng-show="usertype == 1" class="header">HỆ THỐNG</li>
+          <li ng-show="usertype == 1" ng-class="{active : activeMenu == 'SystemLog'}">
             <a ng-click="activeMenu = 'SystemLog'" href="history"><i class="fa fa-history"></i> <span>Lịch sử hệ thống</span> <span class="pull-right-container">
               <span class="label label-danger pull-right">3</span>
             </span></a>
