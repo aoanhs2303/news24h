@@ -44,11 +44,8 @@ app.controller('Hot_ArticleCtrl',  function($scope, $http, $rootScope){
 		vm.multipleDemo = {};
 		vm.multipleDemo.hot = [];
 
-
 		$http.get('http://localhost/news24h/API/news/getHotArticle')
 		.then(function(res){
-			vm.allAricle = res.data;
-			vm.multipleDemo = {};
 			vm.multipleDemo.hot = [];
 			for (var i = 0; i < res.data.length; i++) {
 				vm.multipleDemo.hot.push(res.data[i].id_article);
