@@ -3,7 +3,7 @@
 			<div class="container">
 				<!-- slider -->
 				<div class="row slide">
-					<div class="col-md-8 pr-0 big-slide" style="padding: 3px;">
+					<div class="col-md-8 col-xs-12 pr-0 big-slide" style="padding: 3px;">
 						<div class="slider">
 							<div id="slider-home" class="owl-carousel owl-theme">
 								<?php 
@@ -12,7 +12,7 @@
 								if($key < $length - 2) { ?>
 								<div class="item">
 									<a href="<?php echo base_url() . vn_to_str($hot['title']) .'-'. $hot['id_article']?>.chn">
-										<img style="height: 460px" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="">
+										<img class="slide_img" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="">
 										<div class="caption">
 											<h2><?php echo $hot['title'] ?></h2>
 											<h6>Lorem Ipsum Dolor Sit Meta</h6>
@@ -33,7 +33,7 @@
 							<a href="<?php echo base_url() . vn_to_str($hot['title']) .'-'. $hot['id_article']?>.chn">
 								<div class="new-post" style="height: unset; padding: 3px;">
 								<div class="detail">
-									<img style="width: 100%; height: 227px" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="<?php echo base_url().$hot['image'] ?>" class="img-responsive">
+									<img class="img_slide_sm" style="width: 100%" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="<?php echo base_url().$hot['image'] ?>" class="img-responsive">
 									<p><?php echo $hot['title'] ?></p>
 								</div>
 							</div>
@@ -57,7 +57,7 @@
 					<a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $hot['id_article']?>.chn">
 					<div class="new-post">
 						<div class="detail">
-							<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$latest['image'] ?>" alt="<?php echo base_url().$latest['image'] ?>" class="img-responsive">
+							<img  src="<?php echo base_url().'uploads/'.$latest['image'] ?>" alt="<?php echo base_url().$latest['image'] ?>" class="img-responsive">
 							<p><?php echo $latest['brief_content'] ?></p>
 						</div>
 						<h4><a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $hot['id_article']?>.chn"><?php echo $latest['title'] ?></a></h4>
@@ -83,7 +83,7 @@
 					<a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $nb['id_article']?>.chn">
 					<div class="new-post">
 						<div class="detail">
-							<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">
+							<img src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">
 							<p><?php echo $nb['brief_content'] ?></p>
 						</div>
 						<h4><a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $nb['id_article']?>.chn"><?php echo $nb['title'] ?></a></h4>
@@ -108,7 +108,7 @@
 							<li data-filter="1"><h3>THỜI SỰ</h3></li>
 							<li data-filter="2"><h3>THẾ GIỚI</h3></li>
 							<li data-filter="3"><h3>CÔNG NGHỆ</h3></li>
-							<li data-filter="4"><h3>ÂM NHẠC</h3></li>
+							<li data-filter="4"><h3>GIÁO DỤC</h3></li>
 						</ul>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
-									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
+									<img  src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
 								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
@@ -135,7 +135,7 @@
 							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
-									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
+									<img src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
 								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
@@ -151,7 +151,7 @@
 							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
-									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
+									<img src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
 								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
@@ -167,7 +167,7 @@
 							<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 							<div class="new-post">
 								<div class="detail">
-									<img style="width: 360px; height: 240px" src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
+									<img src="<?php echo base_url().'uploads/'.$ts['image'] ?>" alt="<?php echo base_url().$ts['image'] ?>" class="img-responsive">
 									<p><?php echo $ts['brief_content'] ?></p>
 								</div>
 								<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $ts['title'] ?></a></h4>
@@ -197,11 +197,11 @@
 							<div class="row">
 								<a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn">
 								<div class="col-md-3 pr-0">
-									<img style="width: 210px; height: 140px" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">	
+									<img class="dbl_img" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">	
 								</div>
 								<div class="col-md-9">
 									<h4><a href="<?php echo base_url() . vn_to_str($ts['title']) .'-'. $ts['id_article']?>.chn"><?php echo $nb['title'] ?></a></h4>
-									<p><?php echo $nb['brief_content'] ?></p>	
+									<p class="br_content"><?php echo $nb['brief_content'] ?></p>	
 									<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $ts['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>
 								</div>
 								</a>
@@ -211,7 +211,7 @@
 					</div>
 					<button id="ajax_load" class="btn btn-danger read-more">Xem thêm <i class="fa fa-refresh fa-spin"></i></button>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 xn_4">
 					<div class="section-head">
 						<h3>XEM NHIỀU</h3>
 					</div>

@@ -25,11 +25,11 @@
 							<div class="row">
 								<a href="<?php echo base_url() . vn_to_str($nb['title']) .'-'. $nb['id_article']?>.chn">
 									<div class="col-md-3 pr-0">
-										<img style="width: 210px; height: 140px" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">	
+										<img class="dbl_img" src="<?php echo base_url().'uploads/'.$nb['image'] ?>" alt="<?php echo base_url().$nb['image'] ?>" class="img-responsive">	
 									</div>
 									<div class="col-md-9">
 										<h4><a href="<?php echo base_url() . vn_to_str($nb['title']) .'-'. $nb['id_article']?>.chn"><?php echo $nb['title'] ?></a></h4>
-										<p><?php echo $nb['brief_content'] ?></p>	
+										<p class="br_content"><?php echo $nb['brief_content'] ?></p>	
 										<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $nb['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>
 									</div>
 								</a>

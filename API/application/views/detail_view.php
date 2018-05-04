@@ -1,5 +1,5 @@
-<div class="container">
-			<div class="col-sm-9">
+<div class="container ctn_dt">
+			<div class="col-sm-9 col_9_dt">
 				<?php foreach ($detail as $value) { ?>
 					<div class="detail-blog">
 					<h3 ><?php echo $value['title'] ?></h3>
@@ -82,8 +82,8 @@
 					<?php foreach ($xemnhieu as $key => $value) { 
 						if($key == 0) { ?>
 						<div id="one-news-top">
-							<div class="img-top">
-								<img class="img-fluid" src="<?php echo base_url() ?>uploads/<?php echo $value['image'] ?>" alt="" style="width: 265px">
+							<div class="img-top img_xnn">
+								<img class="img-fluid" src="<?php echo base_url() ?>uploads/<?php echo $value['image'] ?>" alt="">
 							</div>
 							<h3 class="title-top-side"><a href=""><?php echo $value['title'] ?></a></h3>
 						</div>
