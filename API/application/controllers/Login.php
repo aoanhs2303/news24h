@@ -65,8 +65,12 @@ class Login extends CI_Controller {
             $_SESSION["user"] = $data[0]["username"];
             $_SESSION["id_user"] = $data[0]["id_user"];
             $this->session->unset_userdata("ErrorMessage");
-            redirect('http://localhost/news24h/API/home');
-		
+            if(isset($_SESSION['current_page'])) {
+            	$url = "http://localhost" . $_SESSION['current_page'];
+            	redirect($url);
+            } else {
+            	redirect('http://localhost/news24h/API/home');
+            }
         }
         else {
         	$_SESSION["ErrorMessage"] = "Incorrect username or password";

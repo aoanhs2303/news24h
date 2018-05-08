@@ -15,7 +15,7 @@
 										<img class="slide_img" src="<?php echo base_url().'uploads/'.$hot['image'] ?>" alt="">
 										<div class="caption">
 											<h2><?php echo $hot['title'] ?></h2>
-											<h6>Lorem Ipsum Dolor Sit Meta</h6>
+											<!-- <h6>Lorem Ipsum Dolor Sit Meta</h6> -->
 											<button type="button" class="btn button-default"> XEM CHI TIẾT</button>
 										</div>
 									</a>
@@ -54,13 +54,13 @@
 			<div class="row">
 				<?php foreach ($latest_article as $latest) { ?>
 				<div class="col-md-4 col-sm-4">
-					<a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $hot['id_article']?>.chn">
+					<a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $latest['id_article']?>.chn">
 					<div class="new-post">
 						<div class="detail">
 							<img  src="<?php echo base_url().'uploads/'.$latest['image'] ?>" alt="<?php echo base_url().$latest['image'] ?>" class="img-responsive">
 							<p><?php echo $latest['brief_content'] ?></p>
 						</div>
-						<h4><a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $hot['id_article']?>.chn"><?php echo $latest['title'] ?></a></h4>
+						<h4><a href="<?php echo base_url() . vn_to_str($latest['title']) .'-'. $latest['id_article']?>.chn"><?php echo $latest['title'] ?></a></h4>
 						<span class="date"><i class="fa fa-clock-o"></i> <script>timeStamp = new Date(<?php echo $latest['created_date'] ?>*1000); document.write(timeStamp.toLocaleDateString("en-US"));</script></span>
 					</div>	
 					</a>

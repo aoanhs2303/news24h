@@ -1,3 +1,4 @@
+<?php $_SESSION['current_page'] = $_SERVER['REQUEST_URI'] ?>
 <div class="container ctn_dt">
 			<div class="col-sm-9 col_9_dt">
 				<?php foreach ($detail as $value) { ?>
@@ -28,7 +29,7 @@
 								<input type="hidden" id="cm_idarticle" name="id_article" class="form-control" value="<?php echo $value['id_article'] ?>">
 								<input type="hidden" id="cm_iduser" name="id_user" class="form-control" value="<?php echo $_SESSION["id_user"] ?>">
 							<?php } else { ?>
-							<h5>Đăng nhập để bình luận</h5>
+							<h5><a href="<?php echo base_url() ?>login">Đăng nhập để bình luận</a></h5>
 								<input type="text" class="form-control" disabled placeholder="Nhập nôi dung bình luận">
 							<?php } ?>
 							

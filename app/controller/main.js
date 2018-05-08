@@ -10,7 +10,6 @@ app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
 	$rootScope.login_name = log_username;
 	$rootScope.log_iduser = log_iduser;
 	$rootScope.usertype = usertype;
-	console.log(usertype);
 	$scope.colors = [
 	    "label-danger",
 	    "label-primary",
@@ -73,14 +72,12 @@ app.config(function ($routeProvider, $locationProvider) {
 
 .run(['$rootScope', '$location', '$cookieStore', '$http',
 function ($rootScope, $location, $cookieStore, $http) {
-    // keep user logged in after page refresh
     $rootScope.globals = $cookieStore.get('globals') || {};
     if ($rootScope.globals.currentUser) {
         $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
     }
 
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
-        // redirect to login page if not logged in
         if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
             $location.path('/login');
         }
@@ -95,7 +92,6 @@ return {
         ngClasses: "=ngRandomClass"
     },
     link: function (scope, elem, attr) {            
-        //Add random background class to selected element
         elem.addClass(scope.ngClasses[Math.floor(Math.random() * (scope.ngClasses.length))]);
     }
 }});

@@ -67,6 +67,7 @@ class News_model extends CI_Model {
 	public function get5Article()
 	{
 		$this->db->select('*');
+		$this->db->order_by('id_article', 'desc');
 		$this->db->join('category', 'category.id_category = article.id_category', 'left');
 		$data = $this->db->get('article', 5);
 		$data = $data->result_array();
