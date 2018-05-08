@@ -16,7 +16,7 @@ app.controller('AccountCtrl',  function($scope, $http, $routeParams, $rootScope,
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addAccount',data,config)
+		$http.post('http://localhost/news24h/home/news/addAccount',data,config)
 		.then(function(res){
 			$scope.showSimpleToast('✔ Thêm tài khoản thành công');	
 		}, function(err){})
@@ -40,7 +40,7 @@ app.controller('AccountCtrl',  function($scope, $http, $routeParams, $rootScope,
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addAccount',data,config)
+		$http.post('http://localhost/news24h/home/news/addAccount',data,config)
 		.then(function(res){
 			$scope.showSimpleToast('✔ Thêm tài khoản thành công');	
 		}, function(err){})
@@ -63,7 +63,7 @@ app.controller('AccountCtrl',  function($scope, $http, $routeParams, $rootScope,
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		$http.post('http://localhost/news24h/home/news/addLog',data,config)
 		.then(function(res){}, function(err){})
 	}
 

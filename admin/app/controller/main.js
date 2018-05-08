@@ -2,8 +2,8 @@ angular.module('Authentication', []);
 var app = angular.module('myApp',['ngMaterial', 'ngRoute', 'datatables','ngSanitize', 'ui.select', 'ngCookies', 'Authentication']);
 
 app.controller('myController', function ($scope, $rootScope, $http, $cookies) {
-	$rootScope.BASEURL = 'http://localhost/news24h/API/uploads/';
-	$rootScope.URL = 'http://localhost/news24h/API/home/';
+	$rootScope.BASEURL = 'http://localhost/news24h/home/uploads/';
+	$rootScope.URL = 'http://localhost/news24h/home/home/';
 	var log_username = $cookies.get('login_name');
 	var log_iduser = $cookies.get('login_iduser');
 	var usertype = $cookies.get('usertype');

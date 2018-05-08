@@ -5,7 +5,7 @@ angular.module('myApp')
 	$rootScope.activeMenu = 'Cate';
 
 	$scope.showAddCate = false;
-	var get_apiURL = 'http://localhost/news24h/API/news/getAllCate';
+	var get_apiURL = 'http://localhost/news24h/home/news/getAllCate';
 	$http.get(get_apiURL)
 	.then(function(res){
 		$scope.cateData = res.data;
@@ -30,11 +30,11 @@ angular.module('myApp')
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		var editUrl = 'http://localhost/news24h/API/news/editCate';
+		var editUrl = 'http://localhost/news24h/home/news/editCate';
 		$http.post(editUrl,data,config)
 		.then(function(res) {
 			if(res) {
-				var get_apiURL = 'http://localhost/news24h/API/news/getAllCate';
+				var get_apiURL = 'http://localhost/news24h/home/news/getAllCate';
 				$http.get(get_apiURL)
 				.then(function(res){
 					$scope.cateData = res.data;
@@ -57,12 +57,12 @@ angular.module('myApp')
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		var addUrl = 'http://localhost/news24h/API/news/addCate';
+		var addUrl = 'http://localhost/news24h/home/news/addCate';
 		$http.post(addUrl,data,config)
 		.then(function(res) {
 			if(res) {
 				console.log("Thành công");
-				var get_apiURL = 'http://localhost/news24h/API/news/getAllCate';
+				var get_apiURL = 'http://localhost/news24h/home/news/getAllCate';
 				$http.get(get_apiURL)
 				.then(function(res){
 					$scope.cateData = res.data;
@@ -86,11 +86,11 @@ angular.module('myApp')
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		var delUrl = 'http://localhost/news24h/API/news/deleteCate';
+		var delUrl = 'http://localhost/news24h/home/news/deleteCate';
 		$http.post(delUrl,id_cate,config)
 		.then(function(res) {
 			if(res) {
-				var get_apiURL = 'http://localhost/news24h/API/news/getAllCate';
+				var get_apiURL = 'http://localhost/news24h/home/news/getAllCate';
 				$http.get(get_apiURL)
 				.then(function(res){
 					$scope.cateData = res.data;
@@ -114,7 +114,7 @@ angular.module('myApp')
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		$http.post('http://localhost/news24h/home/news/addLog',data,config)
 		.then(function(res){}, function(err){})
 	}
 

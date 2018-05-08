@@ -58,7 +58,7 @@ app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpl
 	$rootScope.header_subname = 'Thêm mới bài báo';
 	$rootScope.activeMenu = 'Article';
 
-	var get_apiURL = 'http://localhost/news24h/API/news/getAllCate';
+	var get_apiURL = 'http://localhost/news24h/home/news/getAllCate';
 	$http.get(get_apiURL)
 	.then(function(res){
 		$scope.cateData = res.data;
@@ -66,7 +66,7 @@ app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpl
 
 	$scope.uploadFile = function(){
         var file = $scope.myFile;
-        var uploadUrl = "http://localhost/news24h/API/news/addArticle";
+        var uploadUrl = "http://localhost/news24h/home/news/addArticle";
         var text = $scope.name;
         fileUpload.uploadFileToUrl(file, uploadUrl, text);
     };
@@ -75,7 +75,7 @@ app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpl
 	$scope.addArticle = function() {
 		//Upload hình trước
 		var file = $scope.myFile;
-        var uploadUrl = "http://localhost/news24h/API/news/uploadFile";
+        var uploadUrl = "http://localhost/news24h/home/news/uploadFile";
         var text = $scope.name;
         fileUpload.uploadFileToUrl(file, uploadUrl, text);
 
@@ -93,7 +93,7 @@ app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpl
 			}
 		}
 		console.log(data);
-		var addUrl = 'http://localhost/news24h/API/news/addArticle';
+		var addUrl = 'http://localhost/news24h/home/news/addArticle';
 		$http.post(addUrl,data,config)
 		.then(function(res) {
 			if(res) {
@@ -120,7 +120,7 @@ app.controller('ArticleCtrl',  function($scope,$rootScope,$http,$mdToast,fileUpl
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		$http.post('http://localhost/news24h/home/news/addLog',data,config)
 		.then(function(res){}, function(err){})
 	}
 

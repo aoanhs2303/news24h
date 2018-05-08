@@ -4,7 +4,7 @@ app.controller('HistoryCtrl',  function($scope, $http, $routeParams, $rootScope,
 	$rootScope.header_subname = 'Quản lý lịch sử hệ thống';
 	$rootScope.activeMenu = 'SystemLog';
 
-	var get_apiURL = 'http://localhost/news24h/API/news/getAllLog';
+	var get_apiURL = 'http://localhost/news24h/home/news/getAllLog';
 	$http.get(get_apiURL)
 	.then(function(res){
 		$scope.logData = res.data;

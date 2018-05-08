@@ -5,7 +5,7 @@ app.controller('List_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 	$rootScope.activeMenu = 'Article';
 
 	var vm = this;
-	var get_apiURL = 'http://localhost/news24h/API/news/getArticle';
+	var get_apiURL = 'http://localhost/news24h/home/news/getArticle';
 	$http.get(get_apiURL)
 	.then(function(res){
 		vm.articleData = res.data;
@@ -21,7 +21,7 @@ app.controller('List_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		var delUrl = 'http://localhost/news24h/API/news/deleteArticle';
+		var delUrl = 'http://localhost/news24h/home/news/deleteArticle';
 		$http.post(delUrl,id_arti,config)
 		.then(function(res) {
 			if(res) {
@@ -30,7 +30,7 @@ app.controller('List_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 				$scope.systemlog(log_content, log_iduser);
 				$scope.showSimpleToast('✔ Xóa thành công');	
 				console.log(res);
-				var get_apiURL = 'http://localhost/news24h/API/news/getArticle';
+				var get_apiURL = 'http://localhost/news24h/home/news/getArticle';
 				$http.get(get_apiURL)
 				.then(function(res){
 					vm.articleData = res.data;
@@ -51,7 +51,7 @@ app.controller('List_ArticleCtrl',  function($scope, $http, $routeParams, $rootS
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		$http.post('http://localhost/news24h/home/news/addLog',data,config)
 		.then(function(res){}, function(err){})
 	}
 

@@ -28,7 +28,7 @@ app.controller('EditAccountCtrl',  function($scope, $http, $routeParams, $rootSc
 			'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 		}
 	}
-	$http.post('http://localhost/news24h/API/news/getUserById',data,config)
+	$http.post('http://localhost/news24h/home/news/getUserById',data,config)
 	.then(function(res){
 		$scope.dataUser = res.data;
 	}, function(err){})
@@ -60,7 +60,7 @@ app.controller('EditAccountCtrl',  function($scope, $http, $routeParams, $rootSc
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/editUserById',data,config)
+		$http.post('http://localhost/news24h/home/news/editUserById',data,config)
 		.then(function(res){
 			$scope.showSimpleToast('✔ Cập nhật thành công');
 		}, function(err){})
@@ -80,7 +80,7 @@ app.controller('EditAccountCtrl',  function($scope, $http, $routeParams, $rootSc
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/changePass',data,config)
+		$http.post('http://localhost/news24h/home/news/changePass',data,config)
 		.then(function(res){
 			if(res.data == -1) {
 				$scope.showSimpleToast('✘ Thông tin không chính xác');	
@@ -104,7 +104,7 @@ app.controller('EditAccountCtrl',  function($scope, $http, $routeParams, $rootSc
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		$http.post('http://localhost/news24h/home/news/addLog',data,config)
 		.then(function(res){}, function(err){})
 	}
 

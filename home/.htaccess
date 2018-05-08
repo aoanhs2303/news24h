@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /news24h/API/
+RewriteBase /news24h/home/
 RewriteCond %{REQUEST_URI} ^system.*
 RewriteCond $1 !^(index\.php|images|js|uploads|css|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]

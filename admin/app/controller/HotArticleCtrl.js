@@ -38,13 +38,13 @@ app.controller('Hot_ArticleCtrl',  function($scope, $http, $rootScope){
 	$rootScope.activeMenu = 'Article';
 
 	var vm = this;
-	$http.get('http://localhost/news24h/API/news/getArticle')
+	$http.get('http://localhost/news24h/home/news/getArticle')
 	.then(function(res){
 		vm.allAricle = res.data;
 		vm.multipleDemo = {};
 		vm.multipleDemo.hot = [];
 
-		$http.get('http://localhost/news24h/API/news/getHotArticle')
+		$http.get('http://localhost/news24h/home/news/getHotArticle')
 		.then(function(res){
 			vm.multipleDemo.hot = [];
 			for (var i = 0; i < res.data.length; i++) {
@@ -68,7 +68,7 @@ app.controller('Hot_ArticleCtrl',  function($scope, $http, $rootScope){
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		var setHotUrl = 'http://localhost/news24h/API/news/setHotArticle';
+		var setHotUrl = 'http://localhost/news24h/home/news/setHotArticle';
 		$http.post(setHotUrl,data,config)
 		.then(function(res){res.data}, function(err){})
 		

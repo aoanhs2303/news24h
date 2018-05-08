@@ -1,45 +1,63 @@
 var app = angular.module('myApp')
-app.controller('CommentCtrl',  function($scope, $http, $routeParams, $rootScope, $mdToast){
-	$rootScope.header_name = 'BÌNH LUẬN';
-	$rootScope.header_subname = 'Quản lý bình luận';
-	$rootScope.activeMenu = 'Comment';
+app.controller('Edit_ArticleCtrl',  function($scope, $http, $routeParams, $rootScope, fileUpload, $mdToast){
+	$rootScope.header_name = 'BÀI VIẾT';
+	$rootScope.header_subname = 'Quản lý bài viết';
+	$rootScope.activeMenu = 'Article';
 
-	var vm = this;
-	var get_apiURL = 'http://localhost/news24h/API/News/getAllComment';
+	// $scope.category 
+	var get_apiURL = 'http://localhost/news24h/home/news/getAllCate';
 	$http.get(get_apiURL)
 	.then(function(res){
-		vm.commentData = res.data;
+		$scope.cateData = res.data;
 	}, function(res){})
 
-	$scope.blockComment = function(item) {
-		var log_content = '';
-		if(item.block == 0) {
-			item.block = 1;
-			log_content = 'Block comment: ' + item.content;
-		} else {
-			item.block = 0;
-			log_content = 'Unblock comment: ' + item.content
-		}
+	if($routeParams.id) {
 		var data = $.param({
-			id_comment: item.id_comment,
-			block: item.block,
+			article_id: $routeParams.id
 		});
+
 		var config = {
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		var editUrl = 'http://localhost/news24h/API/News/toggleComment';
+		var getByIDUrl = 'http://localhost/news24h/home/news/getArticleByID';
+		$http.post(getByIDUrl,data,config)
+		.then(function(res) {
+			if(res) {
+				$scope.editData = res.data;
+			}
+		}, function(err){})		
+	}
+
+	$scope.editArticle = function(item) {
+		var file = $scope.newImage;
+		console.log(file);
+
+		var data = $.param({
+			id_article: item.id_article,
+			title: item.title,
+			brief_content: item.brief_content,
+			content: item.content,
+			id_category: item.id_category
+		})
+		console.log(data);
+
+		var config = {
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		var editUrl = 'http://localhost/news24h/home/news/editArticleByID';
 		$http.post(editUrl,data,config)
 		.then(function(res) {
 			if(res) {
-				$scope.showSimpleToast('✔ Thành công');	
+				var log_content = 'Sửa bài viết: ' + item.title;
+				var log_iduser = $rootScope.log_iduser;
+				$scope.systemlog(log_content, log_iduser);
+				$scope.showSimpleToast('✔ Cập nhật bài viết thành công');
 			}
 		}, function(err){})
-
-		
-		var log_iduser = $rootScope.log_iduser;
-		$scope.systemlog(log_content, log_iduser);
 	}
 
 	$scope.systemlog = function(content, id_user) {
@@ -53,9 +71,10 @@ app.controller('CommentCtrl',  function($scope, $http, $routeParams, $rootScope,
 				'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
 			}
 		}
-		$http.post('http://localhost/news24h/API/news/addLog',data,config)
+		$http.post('http://localhost/news24h/home/news/addLog',data,config)
 		.then(function(res){}, function(err){})
 	}
+
 
 	var last = {
 		bottom: false,
@@ -93,7 +112,7 @@ app.controller('CommentCtrl',  function($scope, $http, $routeParams, $rootScope,
 			.textContent(message)
 			.position(pinTo )
 			.hideDelay(2000)
-		);
+			);
 	};
 
 })
